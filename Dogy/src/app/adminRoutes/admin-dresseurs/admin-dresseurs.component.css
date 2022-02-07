@@ -1,0 +1,12 @@
+.backgrounded{
+    background: url("https://media.ooreka.fr/public/image/dressage-chien-full-13057259.jpg");
+    opacity: 0.2;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}

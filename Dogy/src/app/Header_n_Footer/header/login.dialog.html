@@ -1,1 +1,23 @@
-<h1>Login Dialog</h1>
+<h2 mat-dialog-title>Se Connecter</h2>
+<div mat-dialog-content class="mat-typography">
+
+  <div class="form-group">
+    <label for="email">Adresse E-mail</label>
+    <input type="email" class="form-control" id="email" placeholder="exemple@exemple.com">
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label for="password">Mot de Passe</label>
+    <input type="password" class="form-control" id="password" placeholder="Mot de Passe">
+  </div>
+
+</div>
+<br>
+<div mat-dialog-actions align="end">
+  <button (click)="closeDialog()" class="btn" mat-dialog-close>Cancel</button>&nbsp;
+  <button mat-button mat-dialog-close class="btn btn-danger" cdkFocusInitial>Install</button>
+</div>
+
+<!--DON'T FORGET TO ASSING THIS TO A CANCEL AND CLOSE CLICK EVENT-->

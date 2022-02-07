@@ -1,0 +1,105 @@
+<div style="margin-left: 100px;" class="row">
+
+    <!--List of Announcements-->
+
+    <div style="margin-top: 100px;" class="col-8">
+
+        <h1>Les "Dog Walkers"</h1>
+
+        <br>
+
+        <div class="card-group">
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 1</h5>
+                        <p class="card-text">Adresse 1</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 2</h5>
+                        <p class="card-text">Adresse 2</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 3</h5>
+                        <p class="card-text">Adresse 3</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 4</h5>
+                        <p class="card-text">Adresse 4</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 5</h5>
+                        <p class="card-text">Adresse 5</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Walker 6</h5>
+                        <p class="card-text">Adresse 6</p>
+                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+
+        </div>
+    </div>
+    <!--List of Filters-->
+    <div style="margin-top: 100px;" class="col-4">
+        <h1>Filtrer les "Dog Walkers"...</h1>
+        <h3>Par Nom...</h3>
+        <input style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">
+        <br>
+        <h3>Par région...</h3>
+        <select style="width: 200px;" id="inputState" class="form-control">
+            <option selected value="Tous les régions">Tous les régions</option>
+            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+        </select>
+    </div>
+</div>
+
+<br><br><br>

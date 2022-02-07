@@ -1,0 +1,15 @@
+.backgrounded{
+    background: url("https://premierdogwalkers.com/wp-content/uploads/2019/02/4k-wallpaper-adorable-animal-1249208-1024x694.jpg");
+    opacity: 0.2;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+

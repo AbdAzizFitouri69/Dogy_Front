@@ -1,0 +1,27 @@
+progress::-webkit-progress-value {
+    transition: 0.01s all ease;
+}
+
+.delete{
+  -webkit-transition: background-color 2.5s linear;
+  -moz-transition: background-color 2.5s linear;
+  -o-transition: background-color 2.5s linear;
+  transition: background-color 2.5s linear;
+}
+
+.delete:active{
+    background-color: red;
+}
+
+.backgrounded{
+    background: url("https://wallpapercave.com/wp/wp2122158.jpg");
+    opacity: 0.2;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}

@@ -1,0 +1,95 @@
+<div>
+    <h2 mat-dialog-title style="text-align: center;"><b>Modifier {{data.nom}} {{data.prenom}}</b></h2>
+    <form [formGroup] = "form" (ngSubmit) = "submit()">
+        <mat-dialog-content>
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nom</mat-label>
+                        <input formControlName="nom" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Prénom</mat-label>
+                        <input formControlName="prenom" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Date de Naissance</mat-label>
+                        <input formControlName="naiss" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexe</mat-label>
+                        <mat-select formControlName="sexe">
+                            <mat-option value="Homme">Homme</mat-option>
+                            <mat-option value="Femme">Femme</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ville</mat-label>
+                        <mat-select formControlName="ville" >
+                            <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Horaire de Début</mat-label>
+                        <mat-select formControlName="hor_deb">
+                            <mat-option *ngFor="let morning of mornings" [value]="morning">{{morning}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Horaire de Fin</mat-label>
+                        <mat-select formControlName="hor_fin" >
+                            <mat-option *ngFor="let evening of evenings" [value]="evening">{{evening}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Description du Véterinaire</mat-label>
+                        <textarea formControlName="description" cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30" matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-mini-fab mat-dialog-close style="background-color: red;">
+                <mat-icon>clear</mat-icon>
+            </button>
+            <button type="submit"  mat-mini-fab style="background-color: rgb(16, 151, 3);">
+                <mat-icon>check</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+<div class="backgrounded">
+
+</div>
+
+<mat-toolbar style="background-color: #c8e0bf ; ">
+  <span>Dog Walkers</span>
+</mat-toolbar>
+
+<br>
+
+<h1>Liste des "Dog Walkers"</h1>
+
+<br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Sexe</th>
+      <th scope="col">Ville</th>
+      <th colspan="2" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dogwalker of dogwalkers">
+      <th scope="row">{{dogwalker.id}}</th>
+      <td>{{dogwalker.nom}}</td>
+      <td>{{dogwalker.prenom}}</td>
+      <td>{{dogwalker.sexe}}</td>
+      <td>{{dogwalker.ville}}</td>
+      <td><button class="btn btn-primary">Modifier</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button (click)="openAddDialog()" mat-fab color="primary"
+  style="position: absolute; right: 0; bottom: 0; margin-right: 30px; margin-bottom: 20px;" >
+  <mat-icon>add</mat-icon>
+</button>

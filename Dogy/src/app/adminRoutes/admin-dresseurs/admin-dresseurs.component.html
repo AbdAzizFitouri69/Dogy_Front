@@ -1,0 +1,61 @@
+<div class="backgrounded">
+
+</div>
+
+<mat-toolbar style="background-color: #c8e0bf ; ">
+    <span>Dresseurs</span>
+  </mat-toolbar>
+
+  <br>
+
+<h1>Liste des Dresseurs</h1>
+
+<br>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Ville</th>
+            <th colspan="2" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Morgan</td>
+            <td>Arthur</td>
+            <td>Homme</td>
+            <td>Blackwater</td>
+            <td><button class="btn btn-primary">Modifier</button></td>
+            <td><button class="btn btn-danger">Supprimer</button></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Adler</td>
+            <td>Sadie</td>
+            <td>Femme</td>
+            <td>Mountain Pass</td>
+            <td><button class="btn btn-primary">Modifier</button></td>
+            <td><button class="btn btn-danger">Supprimer</button></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Marston</td>
+            <td>John</td>
+            <td>Homme</td>
+            <td>Blackwater</td>
+            <td><button class="btn btn-primary">Modifier</button></td>
+            <td><button class="btn btn-danger">Supprimer</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button (click)="openAddDialog()" mat-fab color="primary" style="position: absolute; right: 0; bottom: 0; margin-right: 30px; margin-bottom: 20px;">
+    <mat-icon>add</mat-icon>
+  </button>
+

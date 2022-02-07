@@ -1,0 +1,65 @@
+<div style="margin-left: 100px;" class="row">
+
+    <!--List of Announcements-->
+
+    <div style="margin-top: 100px;" class="col-8">
+
+        <h1>Les Dresseurs Disponibles</h1>
+
+        <br>
+
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">Dresseur 1</h5>
+                <p class="card-text">Adresse Dressuer 1</p>
+                <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                <a href="#" class="btn btn-primary">Plus de Détails</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">Dresseur 2</h5>
+                <p class="card-text">Adresse Dressuer 2</p>
+                <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                <a href="#" class="btn btn-primary">Plus de Détails</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">Dresseur 3</h5>
+                <p class="card-text">Adresse Dressuer 3</p>
+                <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                <a href="#" class="btn btn-primary">Plus de Détails</a>
+            </div>
+        </div>
+
+        <br>
+
+
+
+
+
+
+    </div>
+    <!--List of Filters-->
+    <div style="margin-top: 100px;" class="col-4">
+        <h1>Filtrer les Dresseurs...</h1>
+        <h3>Par Nom...</h3>
+        <input style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">
+        <br>
+        <h3>Par région...</h3>
+        <select style="width: 200px;" id="inputState" class="form-control">
+            <option selected value="Tous les régions">Tous les régions</option>
+            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+        </select>
+    </div>
+</div>

@@ -6,3 +6,12 @@
     margin-top: 8%;
     height: 550px;
 }
+
+.zoom{
+    transition: transform .2s;
+}
+
+
+.zoom:hover {
+    transform: scale(1.5);
+  }

@@ -1,0 +1,45 @@
+
+
+<ng-sidenav-container>
+  <ng-sidenav
+    [expanded]="isExpanded"
+    [drawerState]="state"
+    [drawerWidth]="'250px'"
+    [drawerWidthCollapsed]="'0px'"
+    [color]="'#c8e0bf'">
+
+    <br>
+
+    <h3 style="text-align: center;">Administrateur</h3>
+
+    <br>
+    
+    <div class="row">
+      <div style="width: 265px;">
+        <div  class="list-group" id="list-tab" role="tablist">
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-home-list"  routerLink="/a_dash" routerLinkActive="active" role="tab" aria-controls="home">Tableau de Bord</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-profile-list"  href="#" role="tab" aria-controls="profile">Utilisateurs</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-messages-list"  href="#" role="tab" aria-controls="messages">Annonces</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-settings-list"  routerLink="/a_dress" routerLinkActive="active" role="tab" aria-controls="settings">Dresseurs</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-settings-list"  routerLink="/a_dw" routerLinkActive="active" role="tab" aria-controls="settings">Dog Walkers</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-settings-list"  routerLink="/a_vets" routerLinkActive="active" role="tab" aria-controls="settings">Véterinaires</a>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-settings-list"  href="#" role="tab" aria-controls="settings">Articles</a>
+          <br><br><br>
+          <a style="background-color: #bed9b4;" class="list-group-item list-group-item-action" id="list-settings-list"  href="#" role="tab" aria-controls="settings">Déconnexion</a>
+        </div>
+      </div>
+    </div>
+
+
+
+  </ng-sidenav>
+  <ng-sidenav-content>
+
+    
+    
+    <main role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
+
+  </ng-sidenav-content>
+</ng-sidenav-container>
