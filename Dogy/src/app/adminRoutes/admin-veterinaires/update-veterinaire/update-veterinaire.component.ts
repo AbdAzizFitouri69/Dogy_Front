@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Veterinaire } from 'src/app/models/Veterinaire';
 import { VeterinairesServiceService } from 'src/app/services/Admin-Services/Veterinaires/veterinaires-service.service';
-import { SnackUpdate } from 'src/app/snackbar/snackbar';
+import { SnackAdd, SnackUpdate } from 'src/app/snackbar/snackbar';
 
 @Component({
   selector: 'app-update-veterinaire',
@@ -58,12 +58,12 @@ export class UpdateVeterinaireComponent implements OnInit {
     this.vt.sexe = this.form.value.sexe
     this.vt.ville = this.form.value.ville
     console.log(this.vt);
-    this.service.addVeterinaire(this.vt).subscribe(()=>{
-      this.dg.close();
-      this.sb.openFromComponent(SnackUpdate,{
-        duration : 3000
-      })
-    })
+    // this.service.addVeterinaire(this.vt).subscribe(()=>{
+    //   this.dg.close();
+    //   this.sb.openFromComponent(SnackAdd,{
+    //     duration : 3000
+    //   })
+    // })
   }
 
   regions = [

@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashComponent } from './adminRoutes/admin-dash/admin-dash.component';
 import { AdminDogwalkersComponent } from './adminRoutes/admin-dogwalkers/admin-dogwalkers.component';
 import { AdminDresseursComponent } from './adminRoutes/admin-dresseurs/admin-dresseurs.component';
+import { AdminUsersComponent } from './adminRoutes/admin-users/admin-users.component';
 import { AdminVeterinairesComponent } from './adminRoutes/admin-veterinaires/admin-veterinaires.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { DogWalkersComponent } from './dog-walkers/dog-walkers.component';
 import { DresseursComponent } from './dresseurs/dresseurs.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TstComponent } from './Test_Upload/tst/tst.component';
 import { VeterinairesComponent } from './veterinaires/veterinaires.component';
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path : 'a_dress' , component : AdminDresseursComponent},
   { path : 'a_dw' , component : AdminDogwalkersComponent},
   { path : 'a_dash' , component : AdminDashComponent},
+  { path : 'a_users' , component : AdminUsersComponent},
+  { path : 'test' , component : TstComponent},
   { path: '**', component: PageNotFoundComponent },
   //{ path : "articles", component :  }
 ];

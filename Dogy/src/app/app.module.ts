@@ -46,6 +46,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HoldableDirective } from './directives/holdable.directive';
 import { UpdateVeterinaireComponent } from './adminRoutes/admin-veterinaires/update-veterinaire/update-veterinaire.component';
+import { UpdateDogwalkerComponent } from './adminRoutes/admin-dogwalkers/update-dogwalker/update-dogwalker.component';
+import { AdminUsersComponent } from './adminRoutes/admin-users/admin-users.component';
+import { BlacklistComponent } from './adminRoutes/admin-users/Blacklist/blacklist/blacklist.component';
+import { ReasonComponent } from './adminRoutes/admin-users/reason/reason.component';
+import { TstComponent } from './Test_Upload/tst/tst.component';
 
 
 
@@ -79,7 +84,12 @@ import { UpdateVeterinaireComponent } from './adminRoutes/admin-veterinaires/upd
     AddDogwalkerComponent,
     AddVeterinaireComponent,
     HoldableDirective,
-    UpdateVeterinaireComponent
+    UpdateVeterinaireComponent,
+    UpdateDogwalkerComponent,
+    AdminUsersComponent,
+    BlacklistComponent,
+    ReasonComponent,
+    TstComponent
   ],
 
   imports: [

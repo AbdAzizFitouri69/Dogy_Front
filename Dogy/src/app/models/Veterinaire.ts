@@ -8,6 +8,7 @@ export class Veterinaire {
     ville!: String
     description!: String
     horraire!: String
+    image! : any
 
     constructor(){
 

@@ -1,0 +1,11 @@
+<h1>Veuillez Spécifier la Raison</h1>
+<br>
+<form [formGroup] = "form" (ngSubmit) = "submit()">
+<input type="text" class="form-control" formControlName="reason" aria-describedby="Raison" placeholder="Votre Raison...">
+<br>
+<div style="text-align: end;">
+    <button class="btn btn-warning" (click)="closeDilaog()">Annuler</button>&nbsp;
+    <button class="btn btn-danger" type="submit">Confirmer</button>
+</div>
+</form>
+

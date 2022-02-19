@@ -16,6 +16,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Photo</th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Sexe</th>
@@ -26,6 +27,7 @@
   <tbody>
     <tr *ngFor = "let vet of vets">
       <th scope="row">{{vet.id}}</th>
+      <td><span *ngIf = "vet.image"><img [src]="convert(vet.image.content)" height="100px" width="100px" style="border-radius: 50%;" ></span></td>
       <td>{{vet.nom}}</td>
       <td>{{vet.prenom}}</td>
       <td>{{vet.sexe}}</td>

@@ -16,8 +16,16 @@ export class DogwalkerService {
     return this.http.get(this.prefix+"/dogwalkers");
   }
 
-  addDogwalker(dw : Dogwalker) : Observable<any>{
-    return this.http.post(this.prefix+"/dogwalkers/add",dw);
+  addDogwalker(fd : FormData) : Observable<any>{
+    return this.http.post(this.prefix+"/dogwalkers/add",fd);
+  }
+
+  searchDresseur(str : String) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/"+str);
+  }
+
+  searchDresseurByRegion(str : String) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/region/"+str);
   }
 
 }

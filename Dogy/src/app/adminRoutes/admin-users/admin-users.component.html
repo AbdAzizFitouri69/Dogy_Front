@@ -1,0 +1,41 @@
+<div class="backgrounded">
+
+</div>
+
+<mat-toolbar style="background-color: #c8e0bf ; ">
+  <span>Utilisateurs</span>
+</mat-toolbar>
+
+<br>
+
+<h1>Liste des Utilisateurs Inscrits</h1>
+
+<br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">E-Mail</th>
+      <th colspan="2" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let user of users">
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.nom}}</td>
+      <td>{{user.prenom}}</td>
+      <td>{{user.email}}</td>
+      <td><button class="btn btn-primary">Plus de Détails</button></td>
+      <td><button class="btn delete" appHoldable (holdTime)="confirmDelete($event,user)" >Ajouter à la liste Noire <span class="tooltiptext">Maintenez Enfoncé</span></button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button (click)="openBlacklist()" mat-fab
+  style="position: absolute; right: 0; bottom: 0; background-color: black;  margin-right: 30px; margin-bottom: 20px;">
+  <mat-icon>block</mat-icon>
+</button>

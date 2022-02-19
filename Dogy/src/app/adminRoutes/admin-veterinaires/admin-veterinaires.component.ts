@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Veterinaire } from 'src/app/models/Veterinaire';
 import { VeterinairesServiceService } from 'src/app/services/Admin-Services/Veterinaires/veterinaires-service.service';
 import { AddVeterinaireComponent } from './add-veterinaire/add-veterinaire.component';
@@ -12,7 +13,9 @@ import { UpdateVeterinaireComponent } from './update-veterinaire/update-veterina
 })
 export class AdminVeterinairesComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private vetService: VeterinairesServiceService) { }
+  constructor(private dialog: MatDialog, private vetService: VeterinairesServiceService, private _sanitizer: DomSanitizer) { }
+
+  imagePath : any
 
   vets: any = [];
 
@@ -39,9 +42,14 @@ export class AdminVeterinairesComponent implements OnInit {
     })
   }
 
+  convert(base64String){
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
+  }
+
   fillTable() {
     this.vetService.getAllVeterinaires().subscribe(res => {
       this.vets = res;
+      console.log(res)
     })
   }
 
@@ -57,5 +65,21 @@ export class AdminVeterinairesComponent implements OnInit {
       this.fillTable();
     }
   }
+  
+  imageBlobUrl: any
+
+  createImageFromBlob(img){
+    let reader = new FileReader();
+    let imageBlobUrl;
+    reader.addEventListener("load", () => {
+      imageBlobUrl = reader.result;
+    }, false);
+    if(img){
+      reader.readAsDataURL(img);
+    }
+    return imageBlobUrl;
+  }
+
+
 
 }

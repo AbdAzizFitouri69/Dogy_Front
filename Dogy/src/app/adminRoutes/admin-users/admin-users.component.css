@@ -1,0 +1,38 @@
+progress::-webkit-progress-value {
+    transition: 0.01s all ease;
+}
+
+.delete{
+  -webkit-transition: background-color 2.5s linear;
+  -moz-transition: background-color 2.5s linear;
+  -o-transition: background-color 2.5s linear;
+  transition: background-color 2.5s linear;
+  display: inline-block;
+}
+
+.delete:active{
+    background-color: red;
+}
+
+
+/* Tooltip text */
+.delete .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.delete:hover .tooltiptext {
+  visibility: visible;
+  
+}

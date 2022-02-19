@@ -1,72 +1,89 @@
 <div>
     <h2 mat-dialog-title style="text-align: center;"><b>Ajouter un nouveau Dresseur</b></h2>
-    <mat-dialog-content>
-        <div class="form-row">
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Nom</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Prénom</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-        </div>
+    <form [formGroup] = "form" (ngSubmit) = "submit()">
+        <mat-dialog-content>
 
-        <div class="row">
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
+                    <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
+                    <div>
+                        <img *ngIf="imagePreview" [src]="imagePreview" height="100px" width="100px"
+                            style="border-radius: 50%;">
+                    </div>
+                </div>
             </div>
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Sexe</mat-label>
-                    <mat-select>
-                        <mat-option value="Homme">Homme</mat-option>
-                        <mat-option value="Femme">Femme</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput>
-                </mat-form-field>
+            <br>
+
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nom</mat-label>
+                        <input formControlName="nom" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Prénom</mat-label>
+                        <input formControlName="prenom" matInput>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Ville</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input formControlName="naiss" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexe</mat-label>
+                        <mat-select formControlname="sexe">
+                            <mat-option value="Homme">Homme</mat-option>
+                            <mat-option value="Femme">Femme</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-        </div>
-        <div class="form-row" style="text-align: center;">
-            <div class="col">
-                <mat-form-field appearance="fill">
-                    <mat-label>Description du Dresseur</mat-label>
-                    <textarea cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30" matInput></textarea>
-                </mat-form-field>
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ville</mat-label>
+                        <mat-select formControlName="ville">
+                            <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-        </div>
-    </mat-dialog-content>
-    <mat-dialog-actions align="center">
-        <button mat-mini-fab mat-dialog-close style="background-color: red;">
-            <mat-icon>clear</mat-icon>
-        </button>
-        <button mat-mini-fab [mat-dialog-close]="true" cdkFocusInitial style="background-color: rgb(16, 151, 3);">
-            <mat-icon>check</mat-icon>
-        </button>
-    </mat-dialog-actions>
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Description du Dresseur</mat-label>
+                        <textarea formControlName="desc" cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30" matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-mini-fab mat-dialog-close style="background-color: red;">
+                <mat-icon>clear</mat-icon>
+            </button>
+            <button mat-mini-fab type="submit" cdkFocusInitial style="background-color: rgb(16, 151, 3);">
+                <mat-icon>check</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
 </div>

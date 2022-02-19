@@ -16,6 +16,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Photo</th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Sexe</th>
@@ -26,11 +27,12 @@
   <tbody>
     <tr *ngFor="let dogwalker of dogwalkers">
       <th scope="row">{{dogwalker.id}}</th>
+      <td><img [src]="convert(dogwalker.image.content)" height="100px" width="100px" style="border-radius: 50%;" ></td>
       <td>{{dogwalker.nom}}</td>
       <td>{{dogwalker.prenom}}</td>
       <td>{{dogwalker.sexe}}</td>
       <td>{{dogwalker.ville}}</td>
-      <td><button class="btn btn-primary">Modifier</button></td>
+      <td><button class="btn btn-primary" (click)="openUpdateDialog(dogwalker)">Modifier</button></td>
     </tr>
   </tbody>
 </table>

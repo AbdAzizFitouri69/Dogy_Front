@@ -13,23 +13,25 @@
   </div>
 </div>
 
+<br><br><br><br><br><br>
+
 <section class="ftco-section bg-light ftco-no-pt ftco-intro">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 d-flex align-self-stretch px-4  ">
+      <div class="col-md-4 d-flex align-self-stretch px-4" (click)="go_dogwalking()">
         <div class="d-block services text-center">
           <div class="icon d-flex align-items-center justify-content-center">
             <span class="flaticon-blind"></span>
           </div>
-          <div class="media-body">
+          <div class="media-body" >
             <h3 class="heading">Dog Walking</h3>
             <p>Une Sélection des multiples dog walkers qui sont prêt à prendre soin de vos chiens</p>
-            <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span
+            <a  class="btn-custom d-flex align-items-center justify-content-center"><span
                 class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 d-flex align-self-stretch px-4 ">
+      <div class="col-md-4 d-flex align-self-stretch px-4 " (click)="go_veterinaire()">
         <div class="d-block services text-center">
           <div class="icon d-flex align-items-center justify-content-center">
             <span class="flaticon-veterinarian"></span>
@@ -42,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 d-flex align-self-stretch px-4 ">
+      <div class="col-md-4 d-flex align-self-stretch px-4 " (click)="go_dresseur()">
         <div class="d-block services text-center">
           <div class="icon d-flex align-items-center justify-content-center">
             <span class="flaticon-pawprint"></span>
@@ -174,7 +176,7 @@
       <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="50">50</strong>
+            <strong class="number" data-number="50">{{users.length}}</strong>
           </div>
           <div class="text">
             <span>Client</span>
@@ -184,7 +186,7 @@
       <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="8500">25</strong>
+            <strong class="number" data-number="8500">{{vets.length}}</strong>
           </div>
           <div class="text">
             <span>Véterinaires</span>
@@ -194,7 +196,7 @@
       <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="20">20</strong>
+            <strong class="number" data-number="20">{{dws.length}}</strong>
           </div>
           <div class="text">
             <span>Dog Walkers</span>
@@ -204,7 +206,7 @@
       <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="50">35</strong>
+            <strong class="number" data-number="50">{{dress.length}}</strong>
           </div>
           <div class="text">
             <span>Dresseurs</span>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DogwalkerService } from '../services/Admin-Services/Dogwalkers/dogwalker.service';
 
 @Component({
   selector: 'app-dog-walkers',
@@ -7,9 +9,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DogWalkersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service : DogwalkerService, private _sanitizer : DomSanitizer) { }
+
+  dogwalkers! : any []
 
   ngOnInit(): void {
+    this.fillGrid();
+  }
+
+  fillGrid(){
+    this.service.getAllDogwalkers().subscribe(res => {
+      this.dogwalkers = res;
+    })
+  }
+
+  replace(str : string) : string{
+    str = str.replace('_',' ');
+    return str;
+  }
+
+
+  filterByName(str : String){
+    this.service.searchDresseur(str).subscribe((res) => {
+      this.dogwalkers = res
+    })
+  }
+
+  filterByRegion(str : String){
+    if(str === "Tous les régions"){
+      this.fillGrid();
+    }else{
+      this.service.searchDresseurByRegion(str).subscribe(res => {
+        this.dogwalkers = res;
+      })
+    }
+  }
+
+  convert(base64String){
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
   regions = [

@@ -1,0 +1,18 @@
+<h1>Liste Noire <span class="exitButton" (click)="closeDialog()"><mat-icon>cancel</mat-icon></span></h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Raison</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of blackList">
+            <th scope="row">{{user.idEmailNoir}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.raison}}</td>
+        </tr>
+    </tbody>
+</table>

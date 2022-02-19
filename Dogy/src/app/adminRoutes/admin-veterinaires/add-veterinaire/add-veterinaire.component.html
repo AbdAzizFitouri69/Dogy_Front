@@ -1,7 +1,21 @@
 <div>
     <h2 mat-dialog-title style="text-align: center;"><b>Ajouter un nouveau Véterinaire</b></h2>
-    <form [formGroup] = "form" (ngSubmit) = "submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
         <mat-dialog-content>
+
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
+                    <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
+                    <div>
+                        <img *ngIf="imagePreview" [src]="imagePreview" height="100px" width="100px"
+                            style="border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
             <div class="form-row">
                 <div class="col">
                     <mat-form-field appearance="fill">
@@ -21,7 +35,7 @@
                 <div class="col">
                     <mat-form-field appearance="fill">
                         <mat-label>Date de Naissance</mat-label>
-                        <input formControlName="naiss" matInput [matDatepicker]="picker">
+                        <input  formControlName="naiss" matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -47,7 +61,7 @@
                 <div class="col">
                     <mat-form-field appearance="fill">
                         <mat-label>Ville</mat-label>
-                        <mat-select formControlName="ville" >
+                        <mat-select formControlName="ville">
                             <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -66,7 +80,7 @@
                 <div class="col">
                     <mat-form-field appearance="fill">
                         <mat-label>Horaire de Fin</mat-label>
-                        <mat-select formControlName="hor_fin" >
+                        <mat-select formControlName="hor_fin">
                             <mat-option *ngFor="let evening of evenings" [value]="evening">{{evening}}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -78,16 +92,20 @@
                 <div class="col">
                     <mat-form-field appearance="fill">
                         <mat-label>Description du Véterinaire</mat-label>
-                        <textarea formControlName="description" cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30" matInput></textarea>
+                        <textarea formControlName="description" cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30"
+                            matInput></textarea>
                     </mat-form-field>
                 </div>
             </div>
+
+            
+
         </mat-dialog-content>
         <mat-dialog-actions align="center">
             <button mat-mini-fab mat-dialog-close style="background-color: red;">
                 <mat-icon>clear</mat-icon>
             </button>
-            <button type="submit"  mat-mini-fab style="background-color: rgb(16, 151, 3);">
+            <button type="submit" mat-mini-fab style="background-color: rgb(16, 151, 3);">
                 <mat-icon>check</mat-icon>
             </button>
         </mat-dialog-actions>

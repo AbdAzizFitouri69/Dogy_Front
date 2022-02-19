@@ -17,8 +17,8 @@ export class VeterinairesServiceService {
     return this.http.get(this.prefix+"/veterinaires");
   }
 
-  addVeterinaire(vt : Veterinaire) : Observable<any>{
-    return this.http.post(this.prefix+"/veterinaire/add",vt);
+  addVeterinaire(fd: FormData) : Observable<any>{
+    return this.http.post(this.prefix+"/veterinaire/add",fd);
   }
 
   updateVeterinaire(vt : Veterinaire) : Observable<any>{

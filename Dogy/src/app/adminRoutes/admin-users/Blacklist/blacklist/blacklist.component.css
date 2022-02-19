@@ -1,0 +1,8 @@
+.exitButton{
+    color: red;
+    margin-left: 500px;
+}
+
+.exitButton:hover{
+    cursor: pointer;
+}

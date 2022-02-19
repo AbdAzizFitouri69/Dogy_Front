@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Dogwalker } from 'src/app/models/Dogwalker';
 import { DogwalkerService } from 'src/app/services/Admin-Services/Dogwalkers/dogwalker.service';
 import { AddDogwalkerComponent } from './add-dogwalker/add-dogwalker.component';
+import { UpdateDogwalkerComponent } from './update-dogwalker/update-dogwalker.component';
 
 @Component({
   selector: 'app-admin-dogwalkers',
@@ -10,7 +13,7 @@ import { AddDogwalkerComponent } from './add-dogwalker/add-dogwalker.component';
 })
 export class AdminDogwalkersComponent implements OnInit {
 
-  constructor(private dialog : MatDialog, private service : DogwalkerService) { }
+  constructor(private dialog : MatDialog, private service : DogwalkerService , private _sanitizer : DomSanitizer) { }
 
   dogwalkers :any = [];
   
@@ -28,6 +31,20 @@ export class AdminDogwalkersComponent implements OnInit {
     this.service.getAllDogwalkers().subscribe(res => {
       this.dogwalkers = res;
     })
+  }
+
+  openUpdateDialog(dw : Dogwalker){
+    this.dialog.open(UpdateDogwalkerComponent,
+        { data : {
+          data : dw
+        }}
+      ).afterClosed().subscribe(()=>{
+      this.fillTable();
+    })
+  }
+
+  convert(base64String){
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
 }

@@ -1,0 +1,6 @@
+<div>
+    <img  *ngIf = "imagePreview" [src]="imagePreview" height="100px" width="100px" style="border-radius: 50%;">
+</div>
+
+<input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
+<button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>

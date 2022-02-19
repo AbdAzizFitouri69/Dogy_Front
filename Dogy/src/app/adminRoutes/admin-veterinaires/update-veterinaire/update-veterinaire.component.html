@@ -1,5 +1,5 @@
 <div>
-    <h2 mat-dialog-title style="text-align: center;"><b>Modifier {{data.nom}} {{data.prenom}}</b></h2>
+    <h2 mat-dialog-title style="text-align: center;"><b>Modifier {{data['data'].nom}} {{data['data'].prenom}}</b></h2>
     <form [formGroup] = "form" (ngSubmit) = "submit()">
         <mat-dialog-content>
             <div class="form-row">

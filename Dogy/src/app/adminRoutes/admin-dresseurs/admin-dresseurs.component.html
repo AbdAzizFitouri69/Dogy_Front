@@ -20,36 +20,18 @@
             <th scope="col">Prénom</th>
             <th scope="col">Sexe</th>
             <th scope="col">Ville</th>
-            <th colspan="2" scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Morgan</td>
-            <td>Arthur</td>
-            <td>Homme</td>
-            <td>Blackwater</td>
+        <tr *ngFor = "let dresseur of dresseurs">
+            <th scope="row">{{dresseur.id}}</th>
+            <td>{{dresseur.nom}}</td>
+            <td>{{dresseur.prenom}}</td>
+            <td>{{dresseur.sexe}}</td>
+            <td>{{dresseur.ville}}</td>
             <td><button class="btn btn-primary">Modifier</button></td>
-            <td><button class="btn btn-danger">Supprimer</button></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Adler</td>
-            <td>Sadie</td>
-            <td>Femme</td>
-            <td>Mountain Pass</td>
-            <td><button class="btn btn-primary">Modifier</button></td>
-            <td><button class="btn btn-danger">Supprimer</button></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Marston</td>
-            <td>John</td>
-            <td>Homme</td>
-            <td>Blackwater</td>
-            <td><button class="btn btn-primary">Modifier</button></td>
-            <td><button class="btn btn-danger">Supprimer</button></td>
+            <!-- <td><button class="btn btn-danger">Supprimer</button></td> -->
         </tr>
     </tbody>
 </table>
