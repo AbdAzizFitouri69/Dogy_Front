@@ -6,8 +6,8 @@
       data-scrollax-parent="true">
       <div class="col-md-11 ftco-animate text-center">
         <h1 class="mb-4">Meuilleure Platforme pour prendre soin de votre Chien </h1>
-        <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Se Connecter<span
-              class="ion-ios-arrow-forward"></span></a></p>
+        <p><button *ngIf="connected != 'true'"  (click)="loginDialog()" class="btn btn-primary mr-md-4 py-3 px-4">Se Connecter<span
+              class="ion-ios-arrow-forward"></span></button></p>
       </div>
     </div>
   </div>

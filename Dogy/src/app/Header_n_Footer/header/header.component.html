@@ -3,41 +3,72 @@
         <div class="row">
             <div class="col-md-6 d-flex align-items-center">
                 <p class="mb-0 phone pl-md-2">
-                    <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +216 ## ### ###</a> 
+                    <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +216 ## ### ###</a>
                     <a href="#"><span class="fa fa-paper-plane mr-1"></span> dogy@####.com</a>
                 </p>
             </div>
             <div class="col-md-6 d-flex justify-content-md-end">
                 <div class="social-media">
-                <p class="mb-0 d-flex">
-                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                    <!-- <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a> -->
-                </p>
-        </div>
+                    <p class="mb-0 d-flex">
+                        <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                        <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                        <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                        <!-- <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a> -->
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" >
-<div class="container" >
-    <a class="navbar-brand" href="#"><span class="flaticon-pawprint-1 mr-2"></span>DOGY</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fa fa-bars"></span> Menu
-  </button>
-  <div class="collapse navbar-collapse" id="ftco-nav">
-    <ul class="navbar-nav ml-auto">
-        
-        <li class="nav-item" ><a routerLink="/home" routerLinkActive="active" class="nav-link">Accueil</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">A Propos</a></li>
-        <li class="nav-item"><a routerLink="/vets" routerLinkActive="active" class="nav-link">Véterinaires</a></li>
-        <li class="nav-item"><a routerLink="/dw" routerLinkActive="active" class="nav-link">Dog Walkers</a></li>
-        <li class="nav-item"><a routerLink="/dress" routerLinkActive="active" class="nav-link">Dresseurs</a></li>
-        <li class="nav-item"><a routerLink="/annonces" routerLinkActive="active" class="nav-link">Annonces</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Articles</a></li>
-        <!-- <li class="nav-item"><a href="#" class="nav-link">Galerie</a></li> -->
-    </ul>
-  </div>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a routerLink="/home" routerLinkActive="active" class="navbar-brand" href="#"><span class="flaticon-pawprint-1 mr-2"></span>DOGY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item"><a routerLink="/home" routerLinkActive="active" class="nav-link">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">A Propos</a></li>
+                <li class="nav-item dropdown"><a class="nav-link deroulant">Personelles ▼</a>
+                    <div class="dropdown-content">
+                        <a routerLink="/vets" routerLinkActive="active" class="nav-link">Véterinaires</a>
+                        <a routerLink="/dw" routerLinkActive="active" class="nav-link">Dog Walkers</a>
+                        <a routerLink="/dress" routerLinkActive="active" class="nav-link">Dresseurs</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown"><a class="nav-link deroulant">Blog ▼</a>
+                    <div class="dropdown-content">
+                        <a routerLink="/annonces" routerLinkActive="active" class="nav-link">Annonces</a>
+                        <a href="#" class="nav-link">Articles</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" *ngIf="connected == 'true' && admin == 'true'"><a class="nav-link deroulant">Admin ▼</a>
+                    <div class="dropdown-content">
+                        <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Tableau de Bord</a>
+                        <a class="nav-link" routerLink="a_users" routerLinkActive="active" role="tab">Gérer les Utilisateurs</a>
+                        <a class="nav-link">Gérer les Annonces</a>
+                        <a class="nav-link" routerLink="/a_dress" routerLinkActive="active" role="tab">Gérer les Dresseurs</a>
+                        <a routerLink="/a_dw" routerLinkActive="active" role="tab" class="nav-link">Gérer les Dog Walkers</a>
+                        <a routerLink="/a_vets" routerLinkActive="active" class="nav-link">Gérer les Véterinaires</a>
+                        <a class="nav-link" href="#" >Gérer les Articles</a>
+                    </div>
+                </li>
+                <li *ngIf="connected == 'true'" class="nav-item dropdown"><a class="nav-link deroulant">Profil ▼</a>
+                    <div class="dropdown-content">
+                        <a class="nav-link">Vos Annonces</a>
+                        <a class="nav-link">Vos Articles</a>
+                        <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Modifier Profil</a>
+                        <a class="nav-link" (click)="disconnect()" >Déconnexion</a>
+                    </div>
+                </li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link">Galerie</a></li> -->
+            </ul>
+        </div>
+    </div>
 </nav>

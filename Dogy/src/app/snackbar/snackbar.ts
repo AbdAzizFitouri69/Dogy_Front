@@ -6,13 +6,13 @@ import { Component } from "@angular/core";
 })
 export class SnackAdd { }
 
-Component({
+@Component({
     selector: 'update_snack',
     templateUrl: 'success_update.html',
 })
 export class SnackUpdate { }
 
-Component({
+@Component({
     selector: 'delete_snack',
     templateUrl: 'success_delete.html',
 })

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 import { DogwalkerService } from '../services/Admin-Services/Dogwalkers/dogwalker.service';
 import { AdminDresseurService } from '../services/Admin-Services/Dresseurs/admin-dresseur.service';
 import { AdminUsersService } from '../services/Admin-Services/Users/admin-users.service';
@@ -12,12 +14,14 @@ import { VeterinairesServiceService } from '../services/Admin-Services/Veterinai
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private rt : Router,private serv_dres : AdminDresseurService, private serv_dw : DogwalkerService, private serv_user : AdminUsersService, private serv_vet : VeterinairesServiceService) { }
+  constructor(private rt : Router,private serv_dres : AdminDresseurService, private serv_dw : DogwalkerService, private serv_user : AdminUsersService, private serv_vet : VeterinairesServiceService, private dg: MatDialog) { }
 
   dress! : any []
   vets! : any []
   users! : any []
   dws! : any []
+
+  connected = localStorage.getItem('connected');
 
   ngOnInit(): void {
     this.serv_dres.getAllDresseurs().subscribe((res) => {
@@ -47,6 +51,13 @@ export class HomeComponent implements OnInit {
   go_dresseur(){
     this.rt.navigateByUrl('dress')
     window.scrollTo(0,0)
+  }
+
+  loginDialog(){
+    this.dg.open(LoginComponent).afterClosed().subscribe(()=> {
+      console.log('Admin : ' + localStorage.getItem('Admin'))
+      console.log('User : ' + localStorage.getItem('User'))
+    })
   }
 
   homeSlider = { items: 1, dots: true, autoplay: true , loop : true , autoplayHoverPause : true}

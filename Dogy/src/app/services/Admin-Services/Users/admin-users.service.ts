@@ -26,4 +26,12 @@ export class AdminUsersService {
     return this.http.post(this.userPrefix+"/toBlackList/"+reason, user);
   }
 
+  getOneUser(email : String) : Observable<any>{
+    return this.http.get(this.userPrefix+"/getOne/"+email);
+  }
+
+  addUser(user : User) : Observable<any>{
+    return this.http.post(this.userPrefix+"/add",user);
+  }
+
 }

@@ -14,27 +14,28 @@
 
 <table class="table">
     <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Sexe</th>
-            <th scope="col">Ville</th>
-            <th scope="col"></th>
-        </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Sexe</th>
+        <th scope="col">Ville</th>
+        <th scope="col"></th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let dresseur of dresseurs">
-            <th scope="row">{{dresseur.id}}</th>
-            <td>{{dresseur.nom}}</td>
-            <td>{{dresseur.prenom}}</td>
-            <td>{{dresseur.sexe}}</td>
-            <td>{{dresseur.ville}}</td>
-            <td><button class="btn btn-primary">Modifier</button></td>
-            <!-- <td><button class="btn btn-danger">Supprimer</button></td> -->
-        </tr>
+      <tr *ngFor="let dresseur of dresseurs">
+        <th scope="row">{{dresseur.id}}</th>
+        <td><img [src]="convert(dresseur.image.content)" height="100px" width="100px" style="border-radius: 50%;" ></td>
+        <td>{{dresseur.nom}}</td>
+        <td>{{dresseur.prenom}}</td>
+        <td>{{dresseur.sexe}}</td>
+        <td>{{dresseur.ville}}</td>
+        <td><button class="btn btn-primary" (click)="updateDialog(dresseur)">Modifier</button></td>
+      </tr>
     </tbody>
-</table>
+  </table>
 
 
 <button (click)="openAddDialog()" mat-fab color="primary" style="position: absolute; right: 0; bottom: 0; margin-right: 30px; margin-bottom: 20px;">

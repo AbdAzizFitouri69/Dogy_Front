@@ -13,7 +13,15 @@ export class HeaderComponent implements OnInit {
   constructor(private dialog : MatDialog , private router: Router) { }
 
   ngOnInit(): void {
+    // this.admin = localStorage.getItem('Admin');  
+    // this.user = localStorage.getItem('User');
   }
+
+  connected = localStorage.getItem("connected")
+
+  admin = localStorage.getItem("admin")
+
+  user;
 
   homeActive = this.router.url === "/home"
   annonceActive = this.router.url === "/annonces"
@@ -25,6 +33,13 @@ export class HeaderComponent implements OnInit {
 
   annonces(){
     this.router.navigate(['/annonces']);
+  }
+
+  disconnect(){
+    localStorage.removeItem('email')
+    localStorage.removeItem('connected')
+    localStorage.removeItem('admin')
+    window.location.reload();
   }
 
 }
@@ -50,6 +65,8 @@ export class LoginDialog {
   closeDialog(){
     this.dialog.close();
   }
+
+  
 
   
 

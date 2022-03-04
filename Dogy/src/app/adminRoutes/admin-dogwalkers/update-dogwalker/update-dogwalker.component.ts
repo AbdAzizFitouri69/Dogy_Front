@@ -25,7 +25,7 @@ export class UpdateDogwalkerComponent implements OnInit {
     this.form = new FormGroup({
       nom : new FormControl(this.data['data'].nom, [Validators.required]),
       prenom : new FormControl(this.data['data'].prenom, [Validators.required]),
-      naiss : new FormControl(new Date(this.data['data'].naiss), [Validators.required]),
+      naiss : new FormControl(new Date(this.data['data'].dateNaissance).toISOString(), [Validators.required]),
       sexe : new FormControl(this.data['data'].sexe, [Validators.required]),
       email : new FormControl(this.data['data'].email, [Validators.required]),
       ville : new FormControl(this.data['data'].ville, [Validators.required]),
@@ -34,22 +34,32 @@ export class UpdateDogwalkerComponent implements OnInit {
   }
 
   submit(){
-    this.dw = new Dogwalker();
-    this.dw.id = this.data['data'].id;
-    this.dw.description = this.form.value.description
-    this.dw.email = this.form.value.email
-    this.dw.naiss = this.form.value.naiss
-    this.dw.nom = this.form.value.nom
-    this.dw.prenom = this.form.value.prenom
-    this.dw.sexe = this.form.value.sexe
-    this.dw.ville = this.form.value.ville
-    console.log(this.dw);
-    // this.service.addDogwalker(this.dw).subscribe(()=>{
-    //   this.dg.close();
-    //   this.sb.openFromComponent(SnackAdd,{
-    //     duration : 3000
-    //   })
-    // })
+    const fd = new FormData();
+    if(this.form.valid) {
+      fd.append('id', this.data['data'].id)
+      fd.append('nom', this.form.value.nom)
+      fd.append('prenom', this.form.value.prenom)
+      fd.append('dateNaissance', this.convertDate(this.form.value.naiss))
+      fd.append('ville', this.form.value.ville)
+      fd.append('sexe', this.form.value.sexe)
+      fd.append('email', this.form.value.email)
+      fd.append('description', this.form.value.description)
+
+      this.service.updateDogWalker(fd).subscribe(()=>{
+        this.dg.close();
+        this.sb.openFromComponent(SnackAdd,{
+          duration : 3000
+        })
+      })
+
+    }
+    
+  }
+
+  convertDate(inputFormat) {
+    function pad(s) { return (s < 10) ? '0' + s : s; }
+    var d = new Date(inputFormat)
+    return [pad(d.getFullYear()), pad(d.getMonth()+1), d.getDate()].join('-')
   }
 
 

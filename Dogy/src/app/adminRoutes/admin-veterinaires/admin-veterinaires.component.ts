@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Veterinaire } from 'src/app/models/Veterinaire';
 import { VeterinairesServiceService } from 'src/app/services/Admin-Services/Veterinaires/veterinaires-service.service';
 import { AddVeterinaireComponent } from './add-veterinaire/add-veterinaire.component';
@@ -13,7 +14,7 @@ import { UpdateVeterinaireComponent } from './update-veterinaire/update-veterina
 })
 export class AdminVeterinairesComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private vetService: VeterinairesServiceService, private _sanitizer: DomSanitizer) { }
+  constructor(private dialog: MatDialog, private vetService: VeterinairesServiceService, private _sanitizer: DomSanitizer, private router : Router) { }
 
   imagePath : any
 
@@ -23,6 +24,9 @@ export class AdminVeterinairesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(localStorage.getItem('admin') != 'true'){
+      this.router.navigateByUrl('home')
+    }
     this.fillTable();
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { fadeAnimation } from '../animations';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-client-home',
@@ -9,9 +11,12 @@ import { fadeAnimation } from '../animations';
 })
 export class ClientHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dg : MatDialog) { }
 
   ngOnInit(): void {
   }
+
+  
+  
 
 }

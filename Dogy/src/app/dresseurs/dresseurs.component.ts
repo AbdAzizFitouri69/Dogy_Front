@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AdminDresseurService } from '../services/Admin-Services/Dresseurs/admin-dresseur.service';
 
 
@@ -10,7 +11,7 @@ import { AdminDresseurService } from '../services/Admin-Services/Dresseurs/admin
 })
 export class DresseursComponent implements OnInit {
 
-  constructor(private service : AdminDresseurService) { }
+  constructor(private service : AdminDresseurService, private _sanitizer : DomSanitizer) { }
 
   dressuers! : any []
 
@@ -44,6 +45,12 @@ export class DresseursComponent implements OnInit {
         this.dressuers = res;
       })
     }
+  }
+
+  
+
+  convert(base64String){
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
   regions = [

@@ -20,6 +20,10 @@ export class AdminDresseurService {
     return this.http.post(this.prefix+"/dresseurs/add",fd);
   }
 
+  updateDresseur(fd : FormData) : Observable<any>{
+    return this.http.put(this.prefix+"/dressuers/update",fd);
+  }
+
   searchDresseur(str : String) : Observable<any>{
     return this.http.get(this.prefix+"/dresseurs/"+str);
   }

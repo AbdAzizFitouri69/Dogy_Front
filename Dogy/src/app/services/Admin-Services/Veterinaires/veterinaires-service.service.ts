@@ -21,8 +21,16 @@ export class VeterinairesServiceService {
     return this.http.post(this.prefix+"/veterinaire/add",fd);
   }
 
-  updateVeterinaire(vt : Veterinaire) : Observable<any>{
-    return this.http.put(this.prefix+"/veterinaires/update",vt);
+  updateVeterinaire(fd: FormData) : Observable<any>{
+    return this.http.put(this.prefix+"/veterinaires/update",fd);
+  }
+
+  searchVeterinaireName(input : String) : Observable<any>{
+    return this.http.get(this.prefix+"/veterinaires/"+input);
+  }
+
+  searchVeterinaireRegion(input : String) : Observable<any>{
+    return this.http.get(this.prefix+"/veterinaires/region/"+input);
   }
 
 

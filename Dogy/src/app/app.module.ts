@@ -31,7 +31,7 @@ import { VeterinairesComponent } from './veterinaires/veterinaires.component';
 import { DresseursComponent } from './dresseurs/dresseurs.component';
 import { DogWalkersComponent } from './dog-walkers/dog-walkers.component';
 import { SidenavModule } from 'angular-ng-sidenav';
-import { AdminDresseursComponent } from './adminRoutes/admin-dresseurs/admin-dresseurs.component';
+import { AdminDresseursComponent, UpdateDresseurDialog } from './adminRoutes/admin-dresseurs/admin-dresseurs.component';
 import { AdminDogwalkersComponent } from './adminRoutes/admin-dogwalkers/admin-dogwalkers.component';
 import { AdminVeterinairesComponent } from './adminRoutes/admin-veterinaires/admin-veterinaires.component';
 import { AdminDashComponent } from './adminRoutes/admin-dash/admin-dash.component';
@@ -42,7 +42,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AddDogwalkerComponent } from './adminRoutes/admin-dogwalkers/add-dogwalker/add-dogwalker.component';
 import { AddVeterinaireComponent } from './adminRoutes/admin-veterinaires/add-veterinaire/add-veterinaire.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HoldableDirective } from './directives/holdable.directive';
 import { UpdateVeterinaireComponent } from './adminRoutes/admin-veterinaires/update-veterinaire/update-veterinaire.component';
@@ -51,6 +51,9 @@ import { AdminUsersComponent } from './adminRoutes/admin-users/admin-users.compo
 import { BlacklistComponent } from './adminRoutes/admin-users/Blacklist/blacklist/blacklist.component';
 import { ReasonComponent } from './adminRoutes/admin-users/reason/reason.component';
 import { TstComponent } from './Test_Upload/tst/tst.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './login/signup/signup.component';
+
 
 
 
@@ -89,7 +92,10 @@ import { TstComponent } from './Test_Upload/tst/tst.component';
     AdminUsersComponent,
     BlacklistComponent,
     ReasonComponent,
-    TstComponent
+    TstComponent,
+    LoginComponent,
+    UpdateDresseurDialog,
+    SignupComponent
   ],
 
   imports: [
@@ -110,8 +116,11 @@ import { TstComponent } from './Test_Upload/tst/tst.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    ReactiveFormsModule,
-    MatSnackBarModule
+    ReactiveFormsModule,  
+    MatSnackBarModule,
+    FormsModule
+
+    
 
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { AdminUsersService } from 'src/app/services/Admin-Services/Users/admin-users.service';
 import { BlacklistComponent } from './Blacklist/blacklist/blacklist.component';
@@ -12,7 +13,7 @@ import { ReasonComponent } from './reason/reason.component';
 })
 export class AdminUsersComponent implements OnInit {
 
-  constructor(private service : AdminUsersService, private dg : MatDialog) { }
+  constructor(private service : AdminUsersService, private dg : MatDialog , private router : Router) { }
 
   progress = 0;
 
@@ -20,6 +21,9 @@ export class AdminUsersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(localStorage.getItem('admin') != 'true'){
+      this.router.navigateByUrl('home')
+    }
     this.fillTable();
   }
 

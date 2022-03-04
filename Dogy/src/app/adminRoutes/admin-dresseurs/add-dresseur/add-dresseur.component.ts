@@ -48,11 +48,12 @@ export class AddDresseurComponent implements OnInit {
 
 
   submit() {
-    //console.log(this.form.value);
+    console.log(this.form.value);
     const fd = new FormData();
     console.log("Entered")
     // this.vt = new Veterinaire();
     if (this.form.valid) {
+      console.log("VALID")
       //this.date = new Date(this.form.value.naiss)
       fd.append('image', this.selecetdFile, this.selecetdFile.name)
       fd.append('nom', this.form.value.nom)

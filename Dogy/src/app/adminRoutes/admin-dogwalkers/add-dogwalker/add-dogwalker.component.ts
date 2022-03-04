@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Dogwalker } from 'src/app/models/Dogwalker';
 import { DogwalkerService } from 'src/app/services/Admin-Services/Dogwalkers/dogwalker.service';
 import { SnackAdd, SnackUpdate } from 'src/app/snackbar/snackbar';
@@ -13,7 +14,7 @@ import { SnackAdd, SnackUpdate } from 'src/app/snackbar/snackbar';
 })
 export class AddDogwalkerComponent implements OnInit {
 
-  constructor(private service: DogwalkerService, private dr: MatDialogRef<AddDogwalkerComponent>, private sb: MatSnackBar) { }
+  constructor(private service: DogwalkerService, private dr: MatDialogRef<AddDogwalkerComponent>, private sb: MatSnackBar, private router : Router) { }
 
   regions = [
     "Ben_Arous", "Ariana", "Tunis", "Nabeul", "Mannouba", "Bizerte", "Béja", "Jendouba", "Zaghouan", "Siliana", "Le_Kef", "Sousse", "Monastir",
@@ -30,6 +31,9 @@ export class AddDogwalkerComponent implements OnInit {
   imagePreview: any;
 
   ngOnInit(): void {
+    if(localStorage.getItem('admin') != 'true'){
+      this.router.navigateByUrl('home')
+    }
     this.form = new FormGroup({
       nom: new FormControl('', [Validators.required]),
       prenom: new FormControl('', [Validators.required]),

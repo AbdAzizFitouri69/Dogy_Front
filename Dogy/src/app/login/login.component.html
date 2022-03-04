@@ -1,0 +1,34 @@
+<!-- <button class="btn btn-warning" (click) = "connectAsUser()">Connect as Normal User</button>
+&nbsp;&nbsp;
+<button class="btn btn-danger" (click) = "connectAsAdmin()">Connect as Super User</button> -->
+
+<div>
+    <h2 mat-dialog-title style="text-align: center;"><b>Accéder à votre compte</b></h2>
+    <form [formGroup]="form" (ngSubmit)="submit()" >
+        <mat-dialog-content style="text-align: center;">
+           
+                    <mat-form-field appearance="fill">
+                        <mat-label>E-Mail</mat-label>
+                        <input formControlName="email" matInput>
+                    </mat-form-field>
+                <br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Mot de Passe</mat-label>
+                        <input formControlName="password" matInput type="password">
+                    </mat-form-field>
+               
+
+        </mat-dialog-content>
+
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close style="background-color: red; color: white;">
+                Annuler
+            </button>
+            <button mat-button type="submit" cdkFocusInitial style="background-color: rgb(16, 151, 3); color: white;">
+                Se Connecter
+            </button>
+        </mat-dialog-actions>
+        <br>
+        <p style="text-align: center;">Si Vous n'avez pas un compte,<br><button class="mat-raised-button" (click)="switchToSignUp()" >Créer un Nouveau Compte</button></p>
+    </form>
+</div>

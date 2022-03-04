@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Dogwalker } from 'src/app/models/Dogwalker';
 import { DogwalkerService } from 'src/app/services/Admin-Services/Dogwalkers/dogwalker.service';
 import { AddDogwalkerComponent } from './add-dogwalker/add-dogwalker.component';
@@ -13,11 +14,14 @@ import { UpdateDogwalkerComponent } from './update-dogwalker/update-dogwalker.co
 })
 export class AdminDogwalkersComponent implements OnInit {
 
-  constructor(private dialog : MatDialog, private service : DogwalkerService , private _sanitizer : DomSanitizer) { }
+  constructor(private dialog : MatDialog, private service : DogwalkerService , private _sanitizer : DomSanitizer, private router : Router) { }
 
   dogwalkers :any = [];
   
   ngOnInit(): void {
+    if(localStorage.getItem('admin') != 'true'){
+      this.router.navigateByUrl('home')
+    }
     this.fillTable();
   }
 

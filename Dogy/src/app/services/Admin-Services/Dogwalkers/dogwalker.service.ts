@@ -28,4 +28,8 @@ export class DogwalkerService {
     return this.http.get(this.prefix+"/dogwalkers/region/"+str);
   }
 
+  updateDogWalker(fd : FormData) : Observable<any>{
+    return this.http.put(this.prefix+"/dogwalkers/update",fd);
+  }
+
 }
