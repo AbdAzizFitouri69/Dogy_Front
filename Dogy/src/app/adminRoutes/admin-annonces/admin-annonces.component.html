@@ -1,0 +1,38 @@
+<br>
+<div style="margin-left: 20px;">
+    <h1>Liste des Annonces pas encore Traitées</h1>
+    <div>
+        <br><br>
+        <table *ngFor="let annonce of annonces" >
+            <tr>
+                <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px" ></td>
+                <td>
+                    <b>{{annonce.titre}}</b>
+                    &nbsp;
+                    <span *ngIf="annonce.status == 'PENDING'"><span class="badge badge-pill badge-secondary">En Cours de Traitement</span>&nbsp;</span>
+                    
+                    <span *ngIf="annonce.status == 'ACCEPTED'"><span class="badge badge-pill badge-success">Accepté</span>&nbsp;</span>
+                    
+                    <span *ngIf="annonce.status == 'REFUSED'"><span class="badge badge-pill badge-danger">Réfusé</span>&nbsp;</span>
+                    
+                    <span *ngIf="annonce.status == 'RESOLU'" class="badge badge-pill badge-warning">Résolue</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
+                    <b>Race</b> : {{annonce.race}}&nbsp;
+                    <b>Age</b> : {{annonce.age}}&nbsp;
+                    <b>Sexe</b> : {{annonce.sexe}}&nbsp;
+                    <b>Taille</b> : {{annonce.taille}}<br>
+                    <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
+                    <b>Ville</b> : {{annonce.ville}}<br>
+                    <b>Plus de Détails</b> : <span *ngIf="annonce.details">{{annonce.details}}</span><span *ngIf="!annonce.details">Pas de Détails Supplémentaires</span>
+                </td>
+            </tr>
+            <tr>
+                <td><button (click)="refuser(annonce.idAnnonce)" class="btn btn-danger">Réfuser</button>&nbsp;<button (click)="accepter(annonce.idAnnonce)" class="btn btn-success">Accepter</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

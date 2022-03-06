@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAnnoncesComponent } from './adminRoutes/admin-annonces/admin-annonces.component';
 import { AdminDashComponent } from './adminRoutes/admin-dash/admin-dash.component';
 import { AdminDogwalkersComponent } from './adminRoutes/admin-dogwalkers/admin-dogwalkers.component';
 import { AdminDresseursComponent } from './adminRoutes/admin-dresseurs/admin-dresseurs.component';
 import { AdminUsersComponent } from './adminRoutes/admin-users/admin-users.component';
 import { AdminVeterinairesComponent } from './adminRoutes/admin-veterinaires/admin-veterinaires.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ClientAnnoncesComponent } from './clientRoutes/client-annonces/client-annonces.component';
+import { ClientArticlesComponent } from './clientRoutes/client-articles/client-articles.component';
 import { DogWalkersComponent } from './dog-walkers/dog-walkers.component';
 import { DresseursComponent } from './dresseurs/dresseurs.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +20,8 @@ import { VeterinairesComponent } from './veterinaires/veterinaires.component';
 const routes: Routes = [
   { path : 'home' , component : HomeComponent },
   { path : 'annonces', component : AnnoncesComponent },
-  //{ path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path : 'articles', component : ArticlesComponent },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path : 'vets', component : VeterinairesComponent},
   { path : 'dress', component : DresseursComponent},
   { path : 'dw', component : DogWalkersComponent},
@@ -25,7 +30,10 @@ const routes: Routes = [
   { path : 'a_dw' , component : AdminDogwalkersComponent},
   { path : 'a_dash' , component : AdminDashComponent},
   { path : 'a_users' , component : AdminUsersComponent},
+  { path : 'a_annonces' , component : AdminAnnoncesComponent},
   { path : 'test' , component : TstComponent},
+  { path : 'client_annonces' , component : ClientAnnoncesComponent},
+  { path : 'client_articles' , component : ClientArticlesComponent},
   { path: '**', component: PageNotFoundComponent },
   //{ path : "articles", component :  }
 ];

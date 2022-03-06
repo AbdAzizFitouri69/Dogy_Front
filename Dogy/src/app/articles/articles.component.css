@@ -1,0 +1,10 @@
+.comments :hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.centred{
+    margin: auto;
+    width: 50%;
+    /* padding: 10px; */
+}

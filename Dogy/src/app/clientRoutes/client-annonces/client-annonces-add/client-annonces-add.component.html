@@ -1,0 +1,142 @@
+<div>
+    <div mat-dialog-title>
+        <h2  style="text-align: center;"><b>Ajouter une Nouvelle Annonce</b></h2>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-dialog-content>
+
+            <div style="text-align: center;">
+                
+                    <label>Type d'Annonce</label>
+                    <select style="text-align: center;" #annonceType (change)="onSelectChange(annonceType.value)" class="form-control"
+                        forControlName="unitAge">
+                        <option value="Accouplement" Selected>Accouplement</option>
+                        <option value="Vente">Vente</option>
+                        <option value="Chien Trouvé">Chien Trouvé</option>
+                        <option value="Chien Perdu">Chien Perdu</option>
+                    </select>
+                
+            </div>
+            <br>
+
+
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
+                        #selectFile>
+                    <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
+                    <div>
+                        <br>
+                        <img *ngIf="imagePreview" [src]="imagePreview" height="100px" width="100px"
+                            style="border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Titre</mat-label>
+                        <input formControlName="titre" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Race</mat-label>
+                        <input formControlName="race" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="fill" style="width: 50px;">
+                        <mat-label>Age</mat-label>
+                        <input formControlName="age" matInput type="number" max="12" min="0">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 150px;">
+                        <mat-label>Unité d'age</mat-label>
+                        <mat-select formControlName="unitAge">
+                            <mat-option value="Mois">Mois</mat-option>
+                            <mat-option value="Année">Année</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sexe</mat-label>
+                        <mat-select formControlName="sexe">
+                            <mat-option value="Male">Male</mat-option>
+                            <mat-option value="Femmelle">Femmelle</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Taille</mat-label>
+                        <mat-select formControlName="taille">
+                            <mat-option value="Petit">Petit</mat-option>
+                            <mat-option value="Moyen">Moyen</mat-option>
+                            <mat-option value="Grand">Grand</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ville</mat-label>
+                        <mat-select formControlName="ville">
+                            <mat-option *ngFor="let region of regions" [value]="region">{{region}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row" *ngIf="vente">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dressage" formControlName="dressage">
+                        <label class="form-check-label" for="dressage">
+                            Dressé(e)
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="papiers" formControlName="papiers">
+                        <label class="form-check-label" for="papiers">
+                            Papiers
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Prix</mat-label>
+                        <input matInput type="number" formControlName="prix" min="0">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Description du Chien</mat-label>
+                        <textarea formControlName="description" cdkTextareaAutosize cdkAutosizeMaxRows="5" cols="30"
+                            matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close style="background-color: red; color: white;">
+                Annuler
+            </button>
+            <button mat-button type="submit" cdkFocusInitial style="background-color: rgb(16, 151, 3); color: white;">
+                Confirmer
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

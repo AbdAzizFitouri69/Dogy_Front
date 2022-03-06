@@ -1,163 +1,58 @@
+<div class="backgrounded">
+
+</div>
+
 <div style="margin-left: 100px;" class="row">
 
-    <!--List of Announcements-->
+    <div class="col-8">
 
+        
 
+        <br>
+        <div style="margin-left: 20px;">
+            <h1>Annonces</h1>
+            <div>
+                <br><br>
 
-
-
-
-
-    <div style="margin-top: 100px;" class="col-8">
-
-        <div class="card-group">
-
-            <div class="col-sm-3">
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Annonce 1</h5>
-                        <p class="card-text">Description Annonce 1</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Annonce 2</h5>
-                        <p class="card-text">Description Annonce 2</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
+                <div *ngIf="annonces.length == 0">
+                    <h4>Pas de Nouvelles Annonces pour le moment</h4>
                 </div>
 
+                <table style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 700px;" *ngFor="let annonce of annonces">
+                    <tr>
+                        <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px"></td>
+                        <td>
+                            <b>{{annonce.titre}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
+                            <b>Race</b> : {{annonce.race}}&nbsp;
+                            <b>Age</b> : {{annonce.age}}&nbsp;
+                            <b>Sexe</b> : {{annonce.sexe}}&nbsp;
+                            <b>Taille</b> : {{annonce.taille}}<br>
+                            <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span
+                                    *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span
+                                    *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span
+                                    *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
+                            <b>Ville</b> : {{annonce.ville}}<br>
+                            <b><button class="btn btn-lg btn-success that" >Plus de Détails <span class="tooltiptext"><span *ngIf="annonce.details">{{annonce.details}}</span><span *ngIf="!annonce.details">Pas de Détails supplémentaires</span></span></button></b>
+                            <!-- <span *ngIf="annonce.details" class="tooltiptext">{{annonce.details}}</span><span
+                                *ngIf="!annonce.details" class="tooltiptext">Pas de Détails Supplémentaires</span> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Depuis L'utilisateur</b> : <span style="background-color: yellow;">{{annonce.user.prenom}}</span>, <b>Email</b> : <span style="background-color: yellow;">{{annonce.user.email}}</span></td>
+                    </tr>
+                </table>
             </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 3</h5>
-                        <p class="card-text">Description Annonce 3</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" >
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 4</h5>
-                        <p class="card-text">Description Annonce 4</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 5</h5>
-                        <p class="card-text">Description Annonce 5</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 6</h5>
-                        <p class="card-text">Description Annonce 6</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" >
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 7</h5>
-                        <p class="card-text">Description Annonce 7</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 8</h5>
-                        <p class="card-text">Description Annonce 8</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="margin-left: 70px;">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top"
-                        src="https://i1.wp.com/readysetpuppy.com/wp-content/uploads/2019/09/The-Dos-and-Donts-of-Exercising-a-Young-German-Shepherd.jpg?fit=994%2C538&ssl=1&resize=1280%2C720"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Anoonce 9</h5>
-                        <p class="card-text">Description Annonce 9</p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
-                    </div>
-                </div>
-            </div>
-
-
-
         </div>
 
 
-       
     </div>
     <!--List of Filters-->
-    <div style="margin-top: 100px;  " class="col-4">
+    <div style="margin-top: 15px;  " class="col-4">
         <h1>Filtrer les annonces...</h1>
         <h3>Par Nom...</h3>
         <input style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">

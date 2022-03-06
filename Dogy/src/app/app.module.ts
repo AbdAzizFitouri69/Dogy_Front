@@ -53,6 +53,13 @@ import { ReasonComponent } from './adminRoutes/admin-users/reason/reason.compone
 import { TstComponent } from './Test_Upload/tst/tst.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
+import { ClientAnnoncesComponent } from './clientRoutes/client-annonces/client-annonces.component';
+import { ClientArticlesComponent } from './clientRoutes/client-articles/client-articles.component';
+import { ClientAnnoncesAddComponent } from './clientRoutes/client-annonces/client-annonces-add/client-annonces-add.component';
+import { AdminAnnoncesComponent } from './adminRoutes/admin-annonces/admin-annonces.component';
+import { ClientArticleAddComponent } from './clientRoutes/client-articles/client-article-add/client-article-add.component';
+import { ArticlesComponent } from './articles/articles.component';
+
 
 
 
@@ -95,7 +102,13 @@ import { SignupComponent } from './login/signup/signup.component';
     TstComponent,
     LoginComponent,
     UpdateDresseurDialog,
-    SignupComponent
+    SignupComponent,
+    ClientAnnoncesComponent,
+    ClientArticlesComponent,
+    ClientAnnoncesAddComponent,
+    AdminAnnoncesComponent,
+    ClientArticleAddComponent,
+    ArticlesComponent
   ],
 
   imports: [
@@ -118,7 +131,7 @@ import { SignupComponent } from './login/signup/signup.component';
     MatSelectModule,
     ReactiveFormsModule,  
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
 
     
 

@@ -1,0 +1,55 @@
+<br>
+<div style="margin-left: 20px;">
+    <h1>Vos Annonces</h1>
+    <button class="btn btn-primary" (click)="openDialog()">Ajouter une Nouvelle Annonce</button>
+    <div>
+        <br><br>
+        <div class="d-flex align-content-start flex-wrap">
+            <table class="p-2"
+                style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 580px;"
+                *ngFor="let annonce of annonces">
+                <tr>
+                    <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px"></td>
+                    <td>
+                        <b>{{annonce.titre}}</b>
+                        &nbsp;
+                        <span *ngIf="annonce.status == 'PENDING'"><span class="badge badge-pill badge-secondary">En
+                                Cours de Traitement</span>&nbsp;</span>
+
+                        <span *ngIf="annonce.status == 'ACCEPTED'"><span
+                                class="badge badge-pill badge-success">Accepté</span>&nbsp;</span>
+
+                        <span *ngIf="annonce.status == 'REFUSED'"><span
+                                class="badge badge-pill badge-danger">Réfusé</span>&nbsp;</span>
+
+                        <span *ngIf="annonce.status == 'RESOLU'" class="badge badge-pill badge-warning">Résolue</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
+                        <b>Race</b> : {{annonce.race}}&nbsp;
+                        <b>Age</b> : {{annonce.age}}&nbsp;
+                        <b>Sexe</b> : {{annonce.sexe}}&nbsp;
+                        <b>Taille</b> : {{annonce.taille}}<br>
+                        <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span
+                                *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span
+                                *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span
+                                *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
+                        <b>Ville</b> : {{annonce.ville}}<br>
+                        <b>Plus de Détails</b> : <span *ngIf="annonce.details">{{annonce.details}}</span><span
+                            *ngIf="!annonce.details">Pas de Détails Supplémentaires</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button (click)="resolve(annonce.idAnnonce)"
+                            [hidden]="annonce.status != 'ACCEPTED' || annonce.status == 'RESOLU'"
+                            class="btn btn-warning">Marquer comme résolue</button></td>
+                </tr>
+
+            </table>
+        </div>
+
+
+    </div>
+</div>

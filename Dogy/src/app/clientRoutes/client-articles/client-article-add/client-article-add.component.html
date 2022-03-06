@@ -1,0 +1,60 @@
+<div>
+    <div mat-dialog-title>
+        <h2 style="text-align: center;"><b>Ajouter une Nouveau Article</b></h2>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-dialog-content>
+            <div class="form-row" style="text-align: center;">
+                <div class="col">
+                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
+                        #selectFile>
+                    <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
+                    <div>
+                        <br>
+                        <img *ngIf="imagePreview" [src]="imagePreview" height="300px" width="300px">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="titre">Titre d'article</label>
+                <input class="form-control" formControlName="titre" id="titre" placeholder="Titre de votre article ici">
+            </div>
+            <div class="form-group">
+                <label>Contenu de votre Article</label>
+                <textarea formControlName="contenu" rows="3"></textarea>
+            </div>
+
+
+
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close style="background-color: red; color: white;">
+                Annuler
+            </button>
+            <button mat-button type="submit" cdkFocusInitial style="background-color: rgb(16, 151, 3); color: white;">
+                Confirmer
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        height: 500,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code'
+        ],
+        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        content_css: [
+            '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+            '//www.tinymce.com/css/codepen.min.css'
+        ]
+    });
+</script>
