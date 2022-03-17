@@ -1,0 +1,29 @@
+<mat-dialog-content>
+    <img [src]="convert(dogwalker.image.content)" height="300px" style="border-style: solid;">
+<br><br>
+<div style="text-align: center;">
+    <p><b>Nom et Prénom </b>: <span *ngIf="dogwalker.sexe == 'Femme'">Mme.</span><span
+            *ngIf="dogwalker.sexe == 'Homme'">M.</span> {{dogwalker.nom}}, {{dogwalker.prenom}}</p>
+    <p><b>Date de Naissance </b>: {{replaceMonths(dogwalker.dateNaissance | date : 'dd MMMM yyyy')}}</p>
+    <p><b>E-Mail </b>: {{dogwalker.email}}</p>
+    <p><b>Ville Domicile </b>: {{replace(dogwalker.ville)}}</p>
+    <p><b>Description </b>:<br>{{dogwalker.description}}</p>
+</div>
+
+<div style="text-align: center;" *ngIf="connected">
+    <button (click)="makeFiable(dogwalker.id)" class="btn btn-primary">
+        <mat-icon>thumb_up</mat-icon><br>Fiable ({{fiables.length}})
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button (click)="makeNonFiable(dogwalker.id)" class="btn btn-danger">
+        <mat-icon>thumb_down</mat-icon><br>Non Fiable ({{non_fiables.length}})
+    </button>
+</div>
+</mat-dialog-content>
+
+
+<br>
+
+<mat-dialog-actions align="center">
+    <button class="btn btn-warning" mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

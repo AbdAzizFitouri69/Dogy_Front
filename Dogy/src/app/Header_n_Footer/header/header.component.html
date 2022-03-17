@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item dropdown" *ngIf="connected == 'true' && admin == 'true'"><a class="nav-link deroulant">Admin ▼</a>
                     <div class="dropdown-content">
-                        <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Tableau de Bord</a>
+                        <!-- <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Tableau de Bord</a> -->
                         <a class="nav-link" routerLink="a_users" routerLinkActive="active" role="tab">Gérer les Utilisateurs</a>
                         <a class="nav-link" routerLink="a_annonces" routerLinkActive="active">Gérer les Annonces</a>
                         <a class="nav-link" routerLink="/a_dress" routerLinkActive="active" role="tab">Gérer les Dresseurs</a>
@@ -63,7 +63,7 @@
                     <div class="dropdown-content">
                         <a routerLink="/client_annonces" class="nav-link" routerLinkActive="active">Vos Annonces</a>
                         <a routerLink="/client_articles" class="nav-link" routerLinkActive="active">Vos Articles</a>
-                        <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Modifier Profil</a>
+                        <!-- <a routerLink="/a_dash" class="nav-link" routerLinkActive="active" role="tab">Modifier Profil</a> -->
                         <a class="nav-link" (click)="disconnect()" >Déconnexion</a>
                     </div>
                 </li>

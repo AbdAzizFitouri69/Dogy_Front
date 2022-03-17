@@ -39,4 +39,12 @@ export class ArticlesService {
     return this.http.post(this.prefix+"/add",fd);
   }
 
+  getArticleComments(idArticle) : Observable<any>{
+    return this.http.get(this.prefix+"/getComments/"+idArticle);
+  }
+
+  postComment(fd : FormData, idUser, idArticle) : Observable<any>{
+    return this.http.put(this.prefix+"/addComment/"+idArticle+"/"+idUser,fd);
+  }
+
 }

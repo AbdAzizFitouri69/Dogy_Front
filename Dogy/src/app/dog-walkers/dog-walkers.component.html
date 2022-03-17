@@ -15,9 +15,8 @@
                     <div class="card-body">
                         <h5 class="card-title"><img [src]="convert(dw.image.content)" height="50px" width="50px" style="border-radius: 50%;" >&nbsp;&nbsp;  {{dw.nom | uppercase}} , {{dw.prenom}}</h5>
                         <p class="card-text"><i>{{replace(dw.ville)}}</i></p>
-                        <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                        <a href="#" class="btn btn-primary">Plus de Détails</a>
+                        <p>{{dw.ratings.length}} Feedbacks d'aprés les clients</p>
+                        <button (click)="openDogwalkerDetails(dw)" class="btn btn-primary">Plus de Détails</button>
                     </div>
                 </div>
             </div>

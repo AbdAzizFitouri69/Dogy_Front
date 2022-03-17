@@ -22,7 +22,7 @@
 
             <div class="form-row" style="text-align: center;">
                 <div class="col">
-                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
+                    <input accept="image/*" formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
                         #selectFile>
                     <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
                     <div>

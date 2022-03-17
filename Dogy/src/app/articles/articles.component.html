@@ -1,3 +1,7 @@
+<div class="backgrounded">
+
+</div>
+
 <br>
 <div style="text-align: center;">
     <h1>Articles du Blog</h1>
@@ -30,7 +34,7 @@
             <td><img [src]="convert(article.image.content)" width="750px" height="750px"></td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">{{article.commentaires.length}} Commentaires</span></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="openComments(article)">{{article.commentaires.length}} Commentaires</span></td>
         </tr>
     </table>
 </div>

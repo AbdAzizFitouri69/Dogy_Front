@@ -32,4 +32,30 @@ export class DogwalkerService {
     return this.http.put(this.prefix+"/dogwalkers/update",fd);
   }
 
+  getDogwalkerFiableRatings(idDogwalker) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/ratings/fiable/"+idDogwalker);
+  }
+
+  getDogwalkerNonFiableRatings(idDogwalker) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/ratings/non_fiable/"+idDogwalker);
+  }
+
+  getDogwalkerCurrentUserRating(idDogwalker,idUser) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/ratings/"+idDogwalker+"/"+idUser);
+  }
+
+  addFiable(idDogwalker,idUser) : Observable<any>{
+    return this.http.post(this.prefix+"/dogwalkers/ratings/add_fiable/"+idDogwalker+"/"+idUser,null);
+  }
+
+  addNonFiable(idDogwalker,idUser) : Observable<any>{
+    return this.http.post(this.prefix+"/dogwalkers/ratings/add_non_fiable/"+idDogwalker+"/"+idUser,null);
+  }
+
+  getNumFiable(idDogwalker) : Observable<any>{
+    return this.http.get(this.prefix+"/dogwalkers/ratings/get_num_fiable/"+idDogwalker);
+  }
+
+
+
 }

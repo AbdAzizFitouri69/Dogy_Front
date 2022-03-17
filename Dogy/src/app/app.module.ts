@@ -59,6 +59,8 @@ import { ClientAnnoncesAddComponent } from './clientRoutes/client-annonces/clien
 import { AdminAnnoncesComponent } from './adminRoutes/admin-annonces/admin-annonces.component';
 import { ClientArticleAddComponent } from './clientRoutes/client-articles/client-article-add/client-article-add.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { CommentsComponent } from './articles/comments/comments.component';
+import { DetailsDogwalkerComponent } from './dog-walkers/details-dogwalker/details-dogwalker.component';
 
 
 
@@ -108,7 +110,9 @@ import { ArticlesComponent } from './articles/articles.component';
     ClientAnnoncesAddComponent,
     AdminAnnoncesComponent,
     ClientArticleAddComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    CommentsComponent,
+    DetailsDogwalkerComponent
   ],
 
   imports: [

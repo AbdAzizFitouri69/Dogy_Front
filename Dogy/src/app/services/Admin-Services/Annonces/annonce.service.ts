@@ -23,6 +23,38 @@ export class AnnonceService {
     return this.http.get(this.prefix+"/accouplement");
   }
 
+  getAcceptedAccouplemnt() : Observable<any>{
+    return this.http.get(this.prefix+"/accouplement/accepted");
+  }
+
+  getAcceptedAccouplementCity(city : String) : Observable<any>{
+    return this.http.get(this.prefix+"/accouplement/accepted/"+city);
+  }
+
+  getAcceptedVente() : Observable<any>{
+    return this.http.get(this.prefix+"/vente/accepted");
+  }
+
+  getAcceptedVenteCity(city : String) : Observable<any>{
+    return this.http.get(this.prefix+"/vente/accepted/"+city);
+  }
+
+  getAcceptedLost() : Observable<any>{
+    return this.http.get(this.prefix+"/lost/accepted");
+  }
+
+  getAcceptedLostCity(city : String) : Observable<any>{
+    return this.http.get(this.prefix+"/lost/accepted/"+city);
+  }
+
+  getAcceptedFound() : Observable<any>{
+    return this.http.get(this.prefix+"/found/accepted");
+  }
+
+  getAcceptedFoundCity(city : String) : Observable<any>{
+    return this.http.get(this.prefix+"/found/accepted/"+city);
+  }
+
   getVente() : Observable<any>{
     return this.http.get(this.prefix+"/vente");
   }
@@ -37,6 +69,10 @@ export class AnnonceService {
 
   getAccepted() : Observable<any>{
     return this.http.get(this.prefix+"/accepted")
+  }
+
+  getAcceptedCity(city : String) : Observable<any>{
+    return this.http.get(this.prefix+"/accepted/"+city);
   }
 
   getPending() : Observable<any> {

@@ -12,28 +12,44 @@
       </div>
       <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
         <h2 class="footer-heading">Derniers Articles</h2>
-        <div class="block-21 mb-4 d-flex">
-          <a class="img mr-4 rounded" style="background-image: url(assets/images/image_1.jpg);"></a>
-          <div class="text">
-            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-            <div class="meta">
-              <div><a href="#"><span class="icon-calendar"></span> April 7, 2020</a></div>
-              <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-              <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+        <div *ngIf="articles.length >= 2">
+          <div class="block-21 mb-4 d-flex">
+            <a class="img mr-4 rounded"><img class="img mr-4 rounded" [src]="convert(articles[0].image.content)"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">{{articles[0].titre}}</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> {{articles[0].dateAjout | date : 'dd MMMM YYYY' }},</a></div>
+                <div><a href="#"><span class="icon-person"></span> {{articles[0].user.nom}}</a></div>
+                <div><a href="#"><span class="icon-chat"></span> {{articles[0].user.prenom}}</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="block-21 mb-4 d-flex">
+            <a class="img mr-4 rounded"><img class="img mr-4 rounded" [src]="convert(articles[1].image.content)"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">{{articles[1].titre}}</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> {{articles[1].dateAjout | date : 'dd MMMM YYYY' }},</a></div>
+                <div><a href="#"><span class="icon-person"></span> {{articles[1].user.nom}}</a></div>
+                <div><a href="#"><span class="icon-chat"></span> {{articles[1].user.prenom}}</a></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="block-21 mb-4 d-flex">
-          <a class="img mr-4 rounded" style="background-image: url(assets/images/image_2.jpg);"></a>
-          <div class="text">
-            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-            <div class="meta">
-              <div><a href="#"><span class="icon-calendar"></span> April 7, 2020</a></div>
-              <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-              <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+        <div *ngIf="articles.length == 1">
+          <div class="block-21 mb-4 d-flex">
+            <a class="img mr-4 rounded"><img class="img mr-4 rounded" [src]="convert(articles[0].image.content)"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">{{articles[0].titre}}</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> {{articles[0].dateAjout | date : 'dd MMMM YYYY' }},</a></div>
+                <div><a href="#"><span class="icon-person"></span> {{articles[0].user.nom}}</a></div>
+                <div><a href="#"><span class="icon-chat"></span> {{articles[0].user.prenom}}</a></div>
+              </div>
             </div>
           </div>
         </div>
+        
       </div>
       <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
         <h2 class="footer-heading">Liens Rapides</h2>

@@ -1,0 +1,27 @@
+<h4 mat-dialog-title><span mat-dialog-close style="color: red; right: 0;"><mat-icon>cancel</mat-icon></span>&nbsp;Commentaires d'Article "{{data['data'].titre}}" ({{comments?.length}})</h4>
+
+<mat-dialog-content>
+
+    <h4 *ngIf="comments?.length == 0">Soyez le premier à Commenter</h4>
+
+    <div *ngFor="let comment of comments" class="media" style="max-width: 500px ; border-style: groove; border-radius: 20px; background-color: rgb(180, 179, 179);">
+        <img style="height: 75px; width: 75px; border-radius: 50%;" src="../../../assets/images/user.jpg">
+        &nbsp;&nbsp;&nbsp;
+        <div class="media-body">
+          <h5 class="mt-0"><b>{{comment.user.prenom}} {{comment.user.nom}}</b></h5>
+          <i>{{comment.contenu}}</i>
+        </div>
+        <br><br><br>
+      </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    
+        <form class="row" [formGroup] = "form" (ngSubmit) = "submit()">
+            <div class="col-auto mr-auto"><input formControlName="content" class="form-control" placeholder="Votre Commentaire ici..." style="width: 500px;"></div>
+            <div class="col-auto"><button type="submit" class="btn btn-primary"><mat-icon>send</mat-icon></button></div>
+        </form>
+    
+
+</mat-dialog-actions>

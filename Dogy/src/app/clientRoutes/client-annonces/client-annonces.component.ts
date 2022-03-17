@@ -53,4 +53,8 @@ export class ClientAnnoncesComponent implements OnInit {
     })
   }
 
+  onSelectChange(type : string){
+    
+  }
+
 }

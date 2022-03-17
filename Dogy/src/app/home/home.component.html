@@ -69,48 +69,49 @@
       </div>
     </div>
     <div class="row d-flex">
-      <div class="col-md-4 d-flex ">
+      <div *ngIf="articles.length >= 1" class="col-md-4 d-flex ">
         <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20 rounded"
-            style="background-image: url('assets/images/image_1.jpg');">
+          <a routerLink="/articles" routerLinkActive="active" class="block-20 rounded">
+            <img [src]="convert(articles[0].image.content)">
           </a>
           <div class="text p-4">
             <div class="meta mb-2">
-              <div><a href="#">April 07, 2020</a></div>
-              <div><a href="#">Admin</a></div>
-              <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">{{articles[0].dateAjout | date : 'dd MMMM YYYY' }}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">| par {{articles[0].user.nom}}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active" class="meta-chat">| <span class="fa fa-comment"></span> {{articles[0].commentaires.length}}</a></div>
             </div>
-            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+            <h3 class="heading"><a routerLink="/articles" routerLinkActive="active">{{articles[0].titre}}</a></h3>
           </div>
         </div>
       </div>
-      <div class="col-md-4 d-flex ">
+
+      <div *ngIf="articles.length >= 2" class="col-md-4 d-flex ">
         <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20 rounded"
-            style="background-image: url('assets/images/image_2.jpg');">
+          <a routerLink="/articles" routerLinkActive="active" class="block-20 rounded">
+            <img [src]="convert(articles[1].image.content)">
           </a>
           <div class="text p-4">
             <div class="meta mb-2">
-              <div><a href="#">April 07, 2020</a></div>
-              <div><a href="#">Admin</a></div>
-              <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">{{articles[1].dateAjout | date : 'dd MMMM YYYY' }}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">| par {{articles[1].user.nom}}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active" class="meta-chat">| <span class="fa fa-comment"></span> {{articles[1].commentaires.length}}</a></div>
             </div>
-            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+            <h3 class="heading"><a routerLink="/articles" routerLinkActive="active">{{articles[1].titre}}</a></h3>
           </div>
         </div>
       </div>
-      <div class="col-md-4 d-flex ">
+      <div *ngIf="articles.length >= 3" class="col-md-4 d-flex ">
         <div class="blog-entry align-self-stretch">
-          <a href="blog-single.html" class="block-20 rounded"
-            style="background-image: url('assets/images/image_3.jpg');">
+          <a routerLink="/articles" routerLinkActive="active" class="block-20 rounded">
+            <img [src]="convert(articles[2].image.content)">
           </a>
           <div class="text p-4">
             <div class="meta mb-2">
-              <div><a href="#">April 07, 2020</a></div>
-              <div><a href="#">Admin</a></div>
-              <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">{{articles[2].dateAjout | date : 'dd MMMM YYYY' }}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active">| par {{articles[2].user.nom}}</a></div>
+              <div><a routerLink="/articles" routerLinkActive="active" class="meta-chat">| <span class="fa fa-comment"></span> {{articles[2].commentaires.length}}</a></div>
             </div>
-            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+            <h3 class="heading"><a routerLink="/articles" routerLinkActive="active">{{articles[2].titre}}</a></h3>
           </div>
         </div>
       </div>

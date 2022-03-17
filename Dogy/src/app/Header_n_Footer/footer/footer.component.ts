@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ArticlesService } from 'src/app/services/Admin-Services/Articles/articles.service';
 import { DogwalkerService } from 'src/app/services/Admin-Services/Dogwalkers/dogwalker.service';
 import { AdminDresseurService } from 'src/app/services/Admin-Services/Dresseurs/admin-dresseur.service';
 import { AdminUsersService } from 'src/app/services/Admin-Services/Users/admin-users.service';
@@ -12,14 +14,17 @@ import { VeterinairesServiceService } from 'src/app/services/Admin-Services/Vete
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private rt : Router,private serv_dres : AdminDresseurService, private serv_dw : DogwalkerService, private serv_user : AdminUsersService, private serv_vet : VeterinairesServiceService) { }
+  constructor(private rt : Router,private serv_dres : AdminDresseurService, private serv_dw : DogwalkerService, private serv_user : AdminUsersService, private serv_vet : VeterinairesServiceService, private articleService : ArticlesService, private _sanitizer : DomSanitizer) { }
 
   dress! : any []
   vets! : any []
   users! : any []
   dws! : any []
 
+  articles! : any[]
+
   ngOnInit(): void {
+    this.fillArticles();
     this.serv_dres.getAllDresseurs().subscribe((res) => {
       this.dress = res
     })
@@ -47,6 +52,16 @@ export class FooterComponent implements OnInit {
   go_dresseur(){
     this.rt.navigateByUrl('dress')
     window.scrollTo(0,0)
+  }
+
+  fillArticles(){
+    this.articleService.getAccepted().subscribe(res => {
+      this.articles = res;
+    })
+  }
+
+  convert(base64String) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
 }

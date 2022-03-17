@@ -22,7 +22,7 @@
   .backgrounded{
     background: url("../../assets/images/annonce_background.jpg");
     opacity: 0.2;
-    position: absolute;
+    position: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     top: 0;

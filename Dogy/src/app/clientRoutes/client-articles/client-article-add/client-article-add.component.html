@@ -6,7 +6,7 @@
         <mat-dialog-content>
             <div class="form-row" style="text-align: center;">
                 <div class="col">
-                    <input formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
+                    <input accept="image/*" formControlName="image" style="display: none" type="file" (change)="onFileUpload($event)"
                         #selectFile>
                     <button (click)="selectFile.click()" class="btn btn-primary">Ajouter une Image</button>
                     <div>
@@ -17,14 +17,14 @@
             </div>
 
             <br>
-
+            
             <div class="form-group">
                 <label for="titre">Titre d'article</label>
                 <input class="form-control" formControlName="titre" id="titre" placeholder="Titre de votre article ici">
             </div>
             <div class="form-group">
                 <label>Contenu de votre Article</label>
-                <textarea formControlName="contenu" rows="3"></textarea>
+                <textarea class="form-control" formControlName="contenu" rows="6"></textarea>
             </div>
 
 
@@ -42,19 +42,3 @@
     </form>
 </div>
 
-<script>
-    tinymce.init({
-        selector: 'textarea',
-        height: 500,
-        plugins: [
-            'advlist autolink lists link image charmap print preview anchor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table contextmenu paste code'
-        ],
-        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        content_css: [
-            '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-            '//www.tinymce.com/css/codepen.min.css'
-        ]
-    });
-</script>

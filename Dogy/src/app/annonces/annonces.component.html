@@ -15,7 +15,7 @@
                 <br><br>
 
                 <div *ngIf="annonces.length == 0">
-                    <h4>Pas de Nouvelles Annonces pour le moment</h4>
+                    <h4>Pas de Nouvelles Annonces pour le moment<br><br><br></h4>
                 </div>
 
                 <table style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 700px;" *ngFor="let annonce of annonces">
@@ -52,41 +52,26 @@
 
     </div>
     <!--List of Filters-->
-    <div style="margin-top: 15px;  " class="col-4">
-        <h1>Filtrer les annonces...</h1>
-        <h3>Par Nom...</h3>
-        <input style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">
+    
+    <div style="margin-top: 15px; right: 0; position: fixed; " class="col-4">
         <br>
+        <h1>Filtrer les annonces...</h1>
         <h3>Par région...</h3>
-        <select style="width: 200px;" id="inputState" class="form-control">
+        <select (change)="onCityChange()" style="width: 200px;" id="inputState" class="form-control">
             <option selected value="Tous les régions">Tous les régions</option>
-            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+            <option *ngFor="let region of regions"  [value]="region">{{region}}</option>
         </select>
         <br>
         <h3>Par Nature d'annonce...</h3>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" checked id="venteCheck">
-            <label class="form-check-label" for="venteCheck">
-                Annonces de Vente
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" checked id="accouplementCheck">
-            <label class="form-check-label" for="accouplementCheck">
-                Annonces d'accouplement
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" checked id="lostCheck">
-            <label class="form-check-label" for="lostCheck">
-                Annonce "Lost"
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" checked id="foundCheck">
-            <label class="form-check-label" for="venteCheck">
-                Annonce "Found"
-            </label>
-        </div>
+        <select #annonceType (change)="onTypeChange(annonceType.value)" style="width: 200px;" id="inputType" class="form-control">
+            <option selected value="Tous les types">Tous les types</option>
+            <option value="Accouplement">Accouplement</option>
+            <option value="Vente">Vente</option>
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+        </select>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
     </div>
 </div>

@@ -21,38 +21,42 @@ export class ClientAnnoncesAddComponent implements OnInit {
 
   selecetdFile!: File;
 
+  imagesList!: File[]
+
   imagePreview: any;
 
-  vente! : boolean
+  vente!: boolean
 
-  accouplement! : boolean
+  accouplement!: boolean
 
-  lost! : boolean
+  lost!: boolean
 
-  found! : boolean
-  
+  found!: boolean
 
 
-  constructor(private service : AnnonceService , private userService : AdminUsersService, private dgRef : MatDialogRef<ClientAnnoncesAddComponent>) { }
+
+  constructor(private service: AnnonceService, private userService: AdminUsersService, private dgRef: MatDialogRef<ClientAnnoncesAddComponent>) { }
 
   ngOnInit(): void {
     console.log(localStorage.getItem('email'))
-    
-    
+    this.imagesList = [];
+    this.accouplement = true
+    this.found = false
+    this.lost = false
     this.vente = false;
     this.form = new FormGroup({
-      image : new FormControl('',[Validators.required]),
-      titre : new FormControl('',[Validators.required]),
-      race : new FormControl('',[Validators.required]),
-      age : new FormControl('',[Validators.required]),
-      unitAge : new FormControl('Mois',[Validators.required]),
-      sexe : new FormControl('',[Validators.required]),
-      taille : new FormControl('',[Validators.required]),
-      ville : new FormControl('',[Validators.required]),
-      description : new FormControl('',[Validators.required]),
-      dressage : new FormControl(false,[Validators.nullValidator]),
-      papiers : new FormControl(false,[Validators.nullValidator]),
-      prix : new FormControl(0,[Validators.nullValidator])
+      image: new FormControl('', [Validators.required]),
+      titre: new FormControl('', [Validators.required]),
+      race: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required]),
+      unitAge: new FormControl('Mois', [Validators.required]),
+      sexe: new FormControl('', [Validators.required]),
+      taille: new FormControl('', [Validators.required]),
+      ville: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      dressage: new FormControl(false, [Validators.nullValidator]),
+      papiers: new FormControl(false, [Validators.nullValidator]),
+      prix: new FormControl(0, [Validators.nullValidator])
     })
   }
 
@@ -60,6 +64,7 @@ export class ClientAnnoncesAddComponent implements OnInit {
 
   onFileUpload(event) {
     this.selecetdFile = event.target.files[0];
+    //this.imagesList.push(this.selecetdFile);
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
@@ -68,27 +73,56 @@ export class ClientAnnoncesAddComponent implements OnInit {
     reader.readAsDataURL(this.selecetdFile);
   }
 
-  user! : User;
+  user!: User;
 
-  submit(){
-    if(this.form.valid){
+  submit() {
+    if (this.form.valid) {
       console.log(this.form.value)
       const fd = new FormData();
       fd.append('image', this.selecetdFile, this.selecetdFile.name)
-      fd.append('titre', this.form.value.titre)
-      fd.append('age',this.form.value.age+" "+this.form.value.unitAge)
-      fd.append('sexe',this.form.value.sexe)
-      fd.append('taille',this.form.value.taille)
-      fd.append('race',this.form.value.race)
-      fd.append('ville',this.form.value.ville)
+      //fd.append('titre', this.form.value.titre)
+      fd.append('age', this.form.value.age + " " + this.form.value.unitAge)
+      fd.append('sexe', this.form.value.sexe)
+      fd.append('taille', this.form.value.taille)
+      fd.append('race', this.form.value.race)
+      fd.append('ville', this.form.value.ville)
       fd.append('details', this.form.value.description)
       fd.append('dressage', this.form.value.dressage)
-      fd.append('papiers',this.form.value.papiers)
+      fd.append('papiers', this.form.value.papiers)
       fd.append('prix', this.form.value.prix)
-      if(this.vente){
+      console.log(fd.get('images'))
+      if (this.vente) {
+        fd.append('titre', 'Vente: '+this.form.value.titre)
         this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
           this.user = res;
-          this.service.addVente(fd,this.user.idUser).subscribe(res => {
+          this.service.addVente(fd, this.user.idUser).subscribe(res => {
+            this.dgRef.close();
+          })
+        })
+      }
+      if (this.accouplement) {
+        fd.append('titre', 'Accouplement: '+this.form.value.titre)
+        this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
+          this.user = res;
+          this.service.addAccouplement(fd, this.user.idUser).subscribe(res => {
+            this.dgRef.close();
+          })
+        })
+      }
+      if (this.lost) {
+        fd.append('titre', 'Chien Perdu: '+this.form.value.titre)
+        this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
+          this.user = res;
+          this.service.addLost(fd, this.user.idUser).subscribe(res => {
+            this.dgRef.close();
+          })
+        })
+      }
+      if (this.found) {
+        fd.append('titre', 'Chien Trouvé: '+this.form.value.titre)
+        this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
+          this.user = res;
+          this.service.addFound(fd, this.user.idUser).subscribe(res => {
             this.dgRef.close();
           })
         })
@@ -96,21 +130,33 @@ export class ClientAnnoncesAddComponent implements OnInit {
     }
   }
 
-  onSelectChange(type : string){
-    if(type == "Accouplement"){
+  onSelectChange(type: string) {
+    if (type == "Accouplement") {
       this.vente = false;
+      this.accouplement = true
+      this.lost = false
+      this.found = false
       console.log(this.vente)
     }
-    if(type == "Vente"){
+    if (type == "Vente") {
       this.vente = true;
+      this.accouplement = false
+      this.lost = false
+      this.found = false
       console.log(this.vente)
     }
-    if(type == "Chien Trouvé"){
+    if (type == "Chien Trouvé") {
       this.vente = false;
+      this.accouplement = false
+      this.lost = false
+      this.found = true
       console.log(this.vente)
     }
-    if(type == "Chien Perdu"){
+    if (type == "Chien Perdu") {
       this.vente = false;
+      this.accouplement = false
+      this.lost = true
+      this.found = false
       console.log(this.vente)
     }
   }
