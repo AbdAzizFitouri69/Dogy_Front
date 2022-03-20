@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td><img [src]="convert(article.image.content)" width="250px" height="250px"></td>
-            <td>{{article.contenu}}</td>
+            <td [innerHTML]="article.contenu "></td>
         </tr>
         <tr>
             <td colspan="2">{{article.commentaires.length}} Commentaires</td>

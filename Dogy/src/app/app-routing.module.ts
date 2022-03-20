@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminAnnoncesComponent } from './adminRoutes/admin-annonces/admin-annonces.component';
+import { AdminArticlesComponent } from './adminRoutes/admin-articles/admin-articles.component';
 import { AdminDashComponent } from './adminRoutes/admin-dash/admin-dash.component';
 import { AdminDogwalkersComponent } from './adminRoutes/admin-dogwalkers/admin-dogwalkers.component';
 import { AdminDresseursComponent } from './adminRoutes/admin-dresseurs/admin-dresseurs.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path : 'a_dash' , component : AdminDashComponent},
   { path : 'a_users' , component : AdminUsersComponent},
   { path : 'a_annonces' , component : AdminAnnoncesComponent},
+  { path : 'a_articles' , component : AdminArticlesComponent},
   { path : 'test' , component : TstComponent},
   { path : 'client_annonces' , component : ClientAnnoncesComponent},
   { path : 'client_articles' , component : ClientArticlesComponent},

@@ -25,10 +25,10 @@
                 </table>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;<b>{{article.titre}}</b></td>
+            <td><h3 style="margin-left: 16px;">{{article.titre}}</h3></td>
         </tr>
         <tr>
-            <td><span style="margin-left: 16px;"><i>{{article.contenu}}</i></span></td>
+            <td><div style="margin-left: 16px;" [innerHTML]="article.contenu"></div></td>
         </tr>
         <tr>
             <td><img [src]="convert(article.image.content)" width="750px" height="750px"></td>

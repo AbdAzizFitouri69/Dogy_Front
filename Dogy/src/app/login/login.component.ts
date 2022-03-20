@@ -3,9 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { User } from '../models/User';
 import { AdminUsersService } from '../services/Admin-Services/Users/admin-users.service';
 import { SignupComponent } from './signup/signup.component';
+import { VerificationComponent } from './signup/verification/verification.component';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,14 @@ import { SignupComponent } from './signup/signup.component';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private thisDg: MatDialogRef<LoginComponent>, private service: AdminUsersService, private sb: MatSnackBar, private dg: MatDialogRef<LoginComponent>, private dialog : MatDialog) { }
+  constructor(private thisDg: MatDialogRef<LoginComponent>, private service: AdminUsersService, private sb: MatSnackBar, private dg: MatDialogRef<LoginComponent>, private dialog: MatDialog, private socialAuthService: SocialAuthService) { }
 
   form!: FormGroup;
 
   user!: User;
+
+
+
 
 
   ngOnInit(): void {
@@ -35,6 +40,47 @@ export class LoginComponent implements OnInit {
   }
 
 
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+      this.socialAuthService.authState.subscribe(res => {
+        this.service.getOneUser(res.email).subscribe(res => {
+          this.user = res;
+          if (this.user != null) {
+            localStorage.setItem("email", res.email)
+            localStorage.setItem("connected", 'true')
+            if (this.user.role == "Admin") {
+              localStorage.setItem('admin', 'true');
+            }
+            window.location.reload();
+          } else {
+            this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
+          }
+        })
+      })
+    })
+  }
+
+  loginWithFacebook(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
+      this.socialAuthService.authState.subscribe(res => {
+        this.service.getOneUser(res.email).subscribe(res => {
+          this.user = res;
+          if (this.user != null) {
+            localStorage.setItem("email", res.email)
+            localStorage.setItem("connected", 'true')
+            if (this.user.role == "Admin") {
+              localStorage.setItem('admin', 'true');
+            }
+            window.location.reload();
+          } else {
+            this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
+          }
+        })
+      })
+    })
+  }
+
+
   submit() {
     if (this.form.valid) {
       this.service.getOneUser(this.form.value.email).subscribe(res => {
@@ -42,14 +88,22 @@ export class LoginComponent implements OnInit {
         console.log(this.user)
         if (this.user != null) {
           if (this.form.value.password === this.user.password) {
-            localStorage.setItem('email', this.user.email);
-            localStorage.setItem('connected', 'true');
-            if(this.user.role == "Admin"){
-              localStorage.setItem('admin' , 'true');
+            if (res.enabled == true) {
+              localStorage.setItem('email', this.user.email);
+              localStorage.setItem('connected', 'true');
+              if (this.user.role == "Admin") {
+                localStorage.setItem('admin', 'true');
+              }
+              this.dg.close();
+              window.location.reload()
+              this.sb.open('Bienvenue, ' + this.user.nom.toUpperCase() + ' ' + this.user.prenom, 'Merci');
+            } else {
+              localStorage.setItem('email', this.user.email);
+              this.service.sendVerifCode(this.user.idUser).subscribe(() => {
+                this.dg.close();
+                this.dialog.open(VerificationComponent);
+              })
             }
-            this.dg.close();
-            window.location.reload()
-            this.sb.open('Bienvenue, ' + this.user.nom.toUpperCase() + ' ' + this.user.prenom, 'Merci');
           } else {
             this.sb.openFromComponent(SnackWrongPassword);
           }
@@ -67,7 +121,7 @@ export class LoginComponent implements OnInit {
     this.thisDg.close();
   }
 
-  switchToSignUp(){
+  switchToSignUp() {
     this.dg.close();
     this.dialog.open(SignupComponent);
   }
@@ -100,10 +154,10 @@ export class SignUp implements OnInit {
 
   user!: User;
 
-  
 
 
-  constructor(private service: AdminUsersService, private dg: MatDialogRef<SignUp>, private sb : MatSnackBar) { }
+
+  constructor(private service: AdminUsersService, private dg: MatDialogRef<SignUp>, private sb: MatSnackBar) { }
 
   ngOnInit(): void {
 

@@ -26,12 +26,24 @@ export class AdminUsersService {
     return this.http.post(this.userPrefix+"/toBlackList/"+reason, user);
   }
 
+  getOneFromBlackList(email) : Observable<any>{
+    return this.http.get(this.blacklistPrefix+"/search/"+email);
+  }
+
   getOneUser(email) : Observable<any>{
     return this.http.get(this.userPrefix+"/getOne/"+email);
   }
 
   addUser(user : User) : Observable<any>{
     return this.http.post(this.userPrefix+"/add",user);
+  }
+
+  sendVerifCode(idUser) :Observable<any>{
+    return this.http.post(this.userPrefix+"/sendVerifCode/"+idUser,null);
+  }
+
+  checkVerifCode(idUser,verifCode) : Observable<any>{
+    return this.http.get(this.userPrefix+"/checkVerifCode/"+idUser+"/"+verifCode);
   }
 
 }

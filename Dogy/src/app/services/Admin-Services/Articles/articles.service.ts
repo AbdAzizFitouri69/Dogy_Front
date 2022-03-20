@@ -32,7 +32,7 @@ export class ArticlesService {
   }
 
   refuse(id) : Observable<any>{
-    return this.http.put(this.prefix+"/refuse"+id,null)
+    return this.http.put(this.prefix+"/refuse/"+id,null)
   }
 
   addArticle(fd : FormData, idUser) : Observable<any>{

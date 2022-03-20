@@ -61,6 +61,13 @@ import { ClientArticleAddComponent } from './clientRoutes/client-articles/client
 import { ArticlesComponent } from './articles/articles.component';
 import { CommentsComponent } from './articles/comments/comments.component';
 import { DetailsDogwalkerComponent } from './dog-walkers/details-dogwalker/details-dogwalker.component';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialLoginModule } from 'angularx-social-login';
+import { DetailsDresseurComponent } from './dresseurs/details-dresseur/details-dresseur.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AdminArticlesComponent } from './adminRoutes/admin-articles/admin-articles.component';
+import { VerificationComponent } from './login/signup/verification/verification.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
 
 
 
@@ -112,7 +119,11 @@ import { DetailsDogwalkerComponent } from './dog-walkers/details-dogwalker/detai
     ClientArticleAddComponent,
     ArticlesComponent,
     CommentsComponent,
-    DetailsDogwalkerComponent
+    DetailsDogwalkerComponent,
+    DetailsDresseurComponent,
+    AdminArticlesComponent,
+    VerificationComponent,
+    SpinnerOverlayComponent
   ],
 
   imports: [
@@ -133,14 +144,32 @@ import { DetailsDogwalkerComponent } from './dog-walkers/details-dogwalker/detai
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    ReactiveFormsModule,  
+    ReactiveFormsModule,
     MatSnackBarModule,
     FormsModule,
+    SocialLoginModule,
+    AngularEditorModule,
+    MatProgressSpinnerModule
 
-    
 
   ],
-  providers: [],
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      authLogin: true,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('876637315451-ap3uqnc9k7g4gdeokp1kt0g6hqni427d.apps.googleusercontent.com')
+        }
+        ,
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('659896935219080')
+        }
+      ]
+    }
+  }, SocialAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

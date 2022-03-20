@@ -1,0 +1,20 @@
+<mat-dialog-content>
+    <img [src]="convert(dresseur.image.content)" height="300px" style="border-style: solid;">
+<br><br>
+<div style="text-align: center;">
+    <p><b>Nom et Prénom </b>: <span *ngIf="dresseur.sexe == 'Femme'">Mme.</span><span
+            *ngIf="dresseur.sexe == 'Homme'">M.</span> {{dresseur.nom}}, {{dresseur.prenom}}</p>
+    <p><b>Date de Naissance </b>: {{replaceMonths(dresseur.dateNaissance | date : 'dd MMMM yyyy')}}</p>
+    <p><b>E-Mail </b>: {{dresseur.email}}</p>
+    <p><b>Ville Domicile </b>: {{replace(dresseur.ville)}}</p>
+    <p><b>Description </b>:<br>{{dresseur.description}}</p>
+</div>
+
+</mat-dialog-content>
+
+
+<br>
+
+<mat-dialog-actions align="center">
+    <button class="btn btn-warning" mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

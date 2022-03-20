@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <div *ngIf="articles.length >= 2" class="col-md-4 d-flex ">
+      <div style="width: 400px;"  *ngIf="articles.length >= 2" class="col-md-4 d-flex ">
         <div class="blog-entry align-self-stretch">
           <a routerLink="/articles" routerLinkActive="active" class="block-20 rounded">
             <img [src]="convert(articles[1].image.content)">

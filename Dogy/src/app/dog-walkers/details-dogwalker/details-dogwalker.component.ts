@@ -15,7 +15,7 @@ export class DetailsDogwalkerComponent implements OnInit {
 
   starRating = 0;
 
-  connected = (localStorage.getItem('email')!=null)
+  connected = (localStorage.getItem('connected')!=null)
 
   constructor(private _sanitizer: DomSanitizer, @Inject(MAT_DIALOG_DATA) public data: any, private service : DogwalkerService, private sb : MatSnackBar , private userService : AdminUsersService) { }
 

@@ -4,31 +4,44 @@
 
 <div>
     <h2 mat-dialog-title style="text-align: center;"><b>Accéder à votre compte</b></h2>
-    <form [formGroup]="form" (ngSubmit)="submit()" >
+    <form [formGroup]="form" (ngSubmit)="submit()">
         <mat-dialog-content style="text-align: center;">
-           
-                    <mat-form-field appearance="fill">
-                        <mat-label>E-Mail</mat-label>
-                        <input formControlName="email" matInput>
-                    </mat-form-field>
-                <br>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Mot de Passe</mat-label>
-                        <input formControlName="password" matInput type="password">
-                    </mat-form-field>
-               
+
+            <mat-form-field appearance="fill">
+                <mat-label>E-Mail</mat-label>
+                <input formControlName="email" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Mot de Passe</mat-label>
+                <input formControlName="password" matInput type="password">
+            </mat-form-field>
+
 
         </mat-dialog-content>
 
         <mat-dialog-actions align="center">
-            <button mat-button mat-dialog-close style="background-color: red; color: white;">
-                Annuler
-            </button>
             <button mat-button type="submit" cdkFocusInitial style="background-color: rgb(16, 151, 3); color: white;">
                 Se Connecter
             </button>
+            <button mat-button mat-dialog-close style="background-color: red; color: white;">
+                Annuler
+            </button>
         </mat-dialog-actions>
         <br>
-        <p style="text-align: center;">Si Vous n'avez pas un compte,<br><button class="mat-raised-button" (click)="switchToSignUp()" >Créer un Nouveau Compte</button></p>
+        
+        <div style="text-align: center;">
+            <p style="text-align: center;"><b>Si Vous n'avez pas un compte,</b><br><button class="mat-raised-button"
+                (click)="switchToSignUp()">Créer un Nouveau Compte</button></p>
+                <p><b>Autres Méthodes de Connexion</b></p>
+        <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png"> | Se Connecter avec Google
+        </button>
+        <hr>
+        <a style="color: white;" (click)="loginWithFacebook()" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> | Se Connecter avec Facebook
+           </a>
+        </div>
+        
     </form>
 </div>

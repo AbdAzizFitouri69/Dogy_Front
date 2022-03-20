@@ -24,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label>Contenu de votre Article</label>
-                <textarea class="form-control" formControlName="contenu" rows="6"></textarea>
+                <angular-editor formControlName="contenu" [config]="editorConfig"></angular-editor>
+                <!-- <textarea class="form-control" formControlName="contenu" rows="6"></textarea> -->
             </div>
 
 

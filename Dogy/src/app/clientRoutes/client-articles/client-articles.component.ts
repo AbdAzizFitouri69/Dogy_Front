@@ -6,6 +6,7 @@ import { User } from 'src/app/models/User';
 import { ArticlesService } from 'src/app/services/Admin-Services/Articles/articles.service';
 import { AdminUsersService } from 'src/app/services/Admin-Services/Users/admin-users.service';
 import { ClientArticleAddComponent } from './client-article-add/client-article-add.component';
+import { SafeHtmlPipe } from './SafeHtmlPipe';
 
 @Component({
   selector: 'app-client-articles',
@@ -44,6 +45,8 @@ export class ClientArticlesComponent implements OnInit {
   convert(base64String) {
     return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
+
+  
 
   openDialog(){
     this.dialog.open(ClientArticleAddComponent).afterClosed().subscribe(()=> {

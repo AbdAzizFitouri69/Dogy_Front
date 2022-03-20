@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AdminDresseurService } from '../services/Admin-Services/Dresseurs/admin-dresseur.service';
+import { DetailsDresseurComponent } from './details-dresseur/details-dresseur.component';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { AdminDresseurService } from '../services/Admin-Services/Dresseurs/admin
 })
 export class DresseursComponent implements OnInit {
 
-  constructor(private service : AdminDresseurService, private _sanitizer : DomSanitizer) { }
+  constructor(private service : AdminDresseurService, private _sanitizer : DomSanitizer, private dg: MatDialog) { }
 
   dressuers! : any []
 
@@ -57,5 +58,15 @@ export class DresseursComponent implements OnInit {
     "Ben_Arous", "Ariana", "Tunis", "Nabeul", "Mannouba", "Bizerte", "Béja", "Jendouba", "Zaghouan", "Siliana", "Le_Kef", "Sousse", "Monastir",
     "Mahdia", "Kasserine", "Sidi_Bouzid", "Kairouan", "Gafsa", "Sfax", "Gabés", "Médenine", "Tozeur", "Kebili", "Tataouine"
   ]
+
+  openDresseursDetails(dresseur){
+    this.dg.open(DetailsDresseurComponent,
+      {
+        data : {
+          data : dresseur
+        }
+      }
+      )
+  }
 
 }
