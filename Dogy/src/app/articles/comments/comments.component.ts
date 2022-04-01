@@ -37,6 +37,7 @@ export class CommentsComponent implements OnInit {
       this.userService.getOneUser(localStorage.getItem('email')).subscribe(res =>{
         this.articleService.postComment(fd,res.idUser,this.data['data'].idArticle).subscribe(()=>{
           this.fillComments();
+          (<HTMLInputElement>document.getElementById("comment")).value = "";
         })
       })
     }

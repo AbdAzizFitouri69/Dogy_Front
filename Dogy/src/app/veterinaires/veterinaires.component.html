@@ -1,87 +1,61 @@
-<div style="margin-left: 100px;" class="row">
+<div class="container-fluid" align="center">
 
-    <!--List of Announcements-->
+    <br>
 
+    <h5 class="section-title h1">Les Véterinaires</h5>
 
+    <br>
 
+    <div class="row">
 
-
-
-
-    <div style="margin-top: 100px;" class="col-8">
-
-
-            <!-- <div class="card-group">
-
-                <div class="col-sm-3" *ngFor="let vet of vets">
-
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"
-                        [src]="convert(vet.image.content)" style="height : 13rem; width: 18rem ;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{vet.nom | uppercase}}, {{vet.prenom}}</h5>
-                            <p class="card-text">{{replace(vet.ville)}}</p>
-                            <p class="card-text">Description Annonce 1</p>
-                            <p style="color: #f0b318;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                    class="fa fa-star"></i><i class="fa fa-star"></i></p>
-                            <a href="#" class="btn btn-primary">Plus de Détails</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+        <div class="col">
+            <input #filterValue (input)="filterByName(filterValue.value)" style="width: 200px;" type="text"
+                class="form-control" placeholder="Rechercher...">
+        </div>
+        <div class="col">
+            <select #filterRegionValue (input)="filterByRegion(filterRegionValue.value)" style="width: 200px;"
+                id="inputState" class="form-control">
+                <option selected value="Tous les régions">Tous les régions</option>
+                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+            </select>
+        </div>
+    </div>
 
 
-            <!-- BEGIN -->
-
-            <section id="team" class="pb-5">
-                <div class="container">
-                    <h5 class="section-title h1">Les Véterinaires</h5>
-                    <div class="row">
-                        <!-- Team member -->
-                        <div style="margin-bottom: 15px;" class="col-xs-12 col-sm-6 col-md-4" *ngFor="let vet of vets">
-                            <div class="image-flip" >
-                                <div class="mainflip flip-0">
-                                    <div class="frontside">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <p><img class=" img-fluid" [src]="convert(vet.image.content)" alt="card image"></p>
-                                                <h4 class="card-title">{{vet.nom | uppercase}}, {{vet.prenom}}</h4>
-                                                <p class="card-text">{{replace(vet.ville)}}</p>
-                                            </div>
-                                        </div>
+    <section id="team" class="pb-5">
+        <div class="container">
+            <div class="row">
+                <!-- Team member -->
+                <div style="margin-bottom: 15px;" class="col-xs-12 col-sm-6 col-md-4" *ngFor="let vet of vets">
+                    <div class="image-flip">
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" [src]="convert(vet.image.content)" alt="card image">
+                                        </p>
+                                        <h4 class="card-title">{{vet.nom | uppercase}}, {{vet.prenom}}</h4>
+                                        <p class="card-text">{{replace(vet.ville)}}</p>
                                     </div>
-                                    <div class="backside">
-                                        <div class="card">
-                                            <div class="card-body text-center mt-4">
-                                                <h4 class="card-title">{{vet.nom | uppercase}}, {{vet.prenom}}</h4>
-                                                <p class="card-text">Horriares de Travail: <br>{{vet.horraire}}</p>
-                                                <p class="card-text">Description: <br>{{vet.description}}</p>
-                                                <p class="card-text">E-Mail: <br><a href="mailto:{{vet.email}}" style="font-size: small;">{{vet.email}}</a></p>
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">{{vet.nom | uppercase}}, {{vet.prenom}}</h4>
+                                        <p class="card-text">Horriares de Travail: <br>{{vet.horraire}}</p>
+                                        <p class="card-text">Description: <br>{{vet.description}}</p>
+                                        <p class="card-text">E-Mail: <br><a href="mailto:{{vet.email}}"
+                                                style="font-size: small;">{{vet.email}}</a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ./Team member -->
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- END -->
 
-        
-    </div>
-    <!--List of Filters-->
-    <div style="margin-top: 100px;" class="col-4">
-        <h1>Filtrer les Veterinaires...</h1>
-        <h3>Par Nom...</h3>
-        <input #filterValue (input)="filterByName(filterValue.value)" style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">
-        <br>
-        <h3>Par région...</h3>
-        <select #filterRegionValue (input)="filterByRegion(filterRegionValue.value)" style="width: 200px;" id="inputState" class="form-control">
-            <option selected value="Tous les régions">Tous les régions</option>
-            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
-        </select>
-    </div>
 </div>

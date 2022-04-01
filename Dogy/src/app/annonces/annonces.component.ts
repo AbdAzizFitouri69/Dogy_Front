@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AnnonceService } from '../services/Admin-Services/Annonces/annonce.service';
 
@@ -9,7 +10,7 @@ import { AnnonceService } from '../services/Admin-Services/Annonces/annonce.serv
 })
 export class AnnoncesComponent implements OnInit {
 
-  constructor(private service : AnnonceService, private _sanitizer : DomSanitizer) { }
+  constructor(private service : AnnonceService, private _sanitizer : DomSanitizer, private sb: MatSnackBar) { }
 
   ngOnInit(): void {
     this.fillAnnonces();
@@ -35,11 +36,20 @@ export class AnnoncesComponent implements OnInit {
     return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
+  plusDeDetails(annonce){
+    if(annonce.details){
+      this.sb.open(annonce.details,"COMPRIS");
+    }else{
+      this.sb.open("Pas de Détails Suplémentaires","COMPRIS");
+    }
+    
+  }
+
 
 
   onTypeChange(type : string){
     this.city = (<HTMLInputElement>document.getElementById("inputState")).value;
-    console.log(this.city)
+    //console.log(this.city)
     if(type == "Accouplement"){
       if(this.city == "Tous les régions"){
         this.service.getAcceptedAccouplemnt().subscribe(res => {

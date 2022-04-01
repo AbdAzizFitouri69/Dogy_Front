@@ -40,17 +40,17 @@ export class FooterComponent implements OnInit {
   }
 
   go_dogwalking(){
-    this.rt.navigateByUrl('dw')
+    this.rt.navigateByUrl('dogwalkers')
     window.scrollTo(0,0)
   }
 
   go_veterinaire(){
-    this.rt.navigateByUrl('vets')
+    this.rt.navigateByUrl('vétérinaires')
     window.scrollTo(0,0)
   }
 
   go_dresseur(){
-    this.rt.navigateByUrl('dress')
+    this.rt.navigateByUrl('dresseurs')
     window.scrollTo(0,0)
   }
 

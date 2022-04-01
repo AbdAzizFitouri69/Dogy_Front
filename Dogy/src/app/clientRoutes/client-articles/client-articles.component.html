@@ -1,44 +1,45 @@
-<br>
-<div style="margin-left: 20px;">
+<div class="container-fluid" align="center">
     <h1>Vos Articles</h1>
     <button (click)="openDialog()" class="btn btn-primary">Ajouter un Article</button>
-</div>
-<br>
-<div class="d-flex align-content-start flex-wrap">
-    <table *ngFor="let article of articles" class="p-2" style="margin-left: 15px; max-width: 700px; background-color: rgb(224, 224, 224); border-radius: 5%; margin-top: 10px;">
-        <tr>
-            <td colspan="2">
-                <table>
-                    <tr>
-                        <td rowspan="2"><img src="../../../assets/images/user.jpg" style="height: 75px; width: 75px; border-radius: 50%;"></td>
-                        <td>{{article.user.prenom}} {{article.user.nom}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{article.dateAjout | date : 'EEEE, dd MMMM YYYY' }}</td>
-                    </tr>
-                </table>
-        </tr>
-        <tr>
-            <td colspan="2"><span style="margin-left: 5px;"><b>{{article.titre}}</b></span>
-                &nbsp;
-                        <span *ngIf="article.status == 'PENDING'"><span class="badge badge-pill badge-secondary">En
-                                Cours de Traitement</span>&nbsp;</span>
 
-                        <span *ngIf="article.status == 'ACCEPTED'"><span
-                                class="badge badge-pill badge-success">Accepté</span>&nbsp;</span>
+    <br><br>
+    <div class="table-responsive  d-flex align-content-start flex-wrap">
+        <table *ngFor="let article of articles" class="p-2"
+            style="background-color: rgb(224, 224, 224); border-radius: 5%;">
+            <tr>
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <!-- <td rowspan="2"><img src="../../../assets/images/user.jpg" style="height: 75px; width: 75px; border-radius: 50%;"></td> -->
+                            <td>{{article.user.prenom}} {{article.user.nom}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{article.dateAjout | date : 'EEEE, dd MMMM YYYY' }}</td>
+                        </tr>
+                    </table>
+            </tr>
+            <tr>
+                <td colspan="2"><span style="margin-left: 5px;"><b>{{article.titre}}</b></span>
+                    &nbsp;
+                    <span *ngIf="article.status == 'PENDING'"><span class="badge badge-pill badge-secondary">En
+                            Cours de Traitement</span>&nbsp;</span>
 
-                        <span *ngIf="article.status == 'REFUSED'"><span
-                                class="badge badge-pill badge-danger">Réfusé</span>&nbsp;</span>
+                    <span *ngIf="article.status == 'ACCEPTED'"><span
+                            class="badge badge-pill badge-success">Accepté</span>&nbsp;</span>
 
-                        <span *ngIf="article.status == 'RESOLU'" class="badge badge-pill badge-warning">Résolue</span>
-            </td>
-        </tr>
-        <tr>
-            <td><img [src]="convert(article.image.content)" width="250px" height="250px"></td>
-            <td [innerHTML]="article.contenu "></td>
-        </tr>
-        <tr>
-            <td colspan="2">{{article.commentaires.length}} Commentaires</td>
-        </tr>
-    </table>
+                    <span *ngIf="article.status == 'REFUSED'"><span
+                            class="badge badge-pill badge-danger">Réfusé</span>&nbsp;</span>
+
+                    <span *ngIf="article.status == 'RESOLU'" class="badge badge-pill badge-warning">Résolue</span>
+                </td>
+            </tr>
+            <tr>
+                <td><img [src]="convert(article.image.content)" width="250px" height="250px"></td>
+                <td [innerHTML]="article.contenu "></td>
+            </tr>
+            <tr>
+                <td colspan="2">{{article.commentaires.length}} Commentaires</td>
+            </tr>
+        </table>
+    </div>
 </div>

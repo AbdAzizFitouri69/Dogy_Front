@@ -83,7 +83,7 @@ export class UpdateDresseurDialog implements OnInit{
       this.router.navigateByUrl('home')
     }
 
-    console.log(new Date(this.data['data'].dateNaissance))
+    //console.log(new Date(this.data['data'].dateNaissance))
     this.form = new FormGroup({
       nom: new FormControl(this.data['data'].nom, [Validators.required]),
       prenom: new FormControl(this.data['data'].prenom, [Validators.required]),
@@ -101,7 +101,7 @@ export class UpdateDresseurDialog implements OnInit{
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
-      console.log(this.imagePreview)
+      //console.log(this.imagePreview)
     };
     reader.readAsDataURL(this.selecetdFile);
   }
@@ -120,7 +120,7 @@ export class UpdateDresseurDialog implements OnInit{
       fd.append('email', this.form.value.email)
       fd.append('description', this.form.value.description)
       //console.log(fd.get('image'))
-      console.log(fd.get('dateNaissance'))
+      //console.log(fd.get('dateNaissance'))
       //console.log(fd.get('prenom'))
       this.service.updateDresseur(fd).subscribe(() => {
         this.dg.close();

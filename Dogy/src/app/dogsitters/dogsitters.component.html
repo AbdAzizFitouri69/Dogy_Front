@@ -1,0 +1,47 @@
+<div class="container-fluid" align="center">
+
+    <br>
+
+    <h1>Les "Dog Sitters"</h1>
+
+
+    <div class="row">
+        <div class="col">
+            <input #filterValue (input)="filterByName(filterValue.value)" style="width: 200px;" type="text"
+                class="form-control" placeholder="Rechercher...">
+        </div>
+        <div class="col">
+            <select #filterRegionValue (input)="filterByRegion(filterRegionValue.value)" style="width: 200px;"
+                id="inputState" class="form-control">
+                <option selected value="Tous les régions">Tous les régions</option>
+                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div>
+
+
+
+        <br>
+
+        <div class="card-group">
+
+            <div class="col-sm-6" *ngFor="let ds of dogsitters">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><img [src]="convert(ds.image.content)" height="50px" width="50px"
+                                style="border-radius: 50%;">&nbsp;&nbsp; {{ds.nom | uppercase}} , {{ds.prenom}}</h5>
+                        <p class="card-text"><i>{{replace(ds.ville)}}</i></p>
+                        <p>{{ds.ratings.length}} Feedbacks d'aprés les clients</p>
+                        <button (click)="openDogwalkerDetails(ds)" class="btn btn-primary">Plus de Détails</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

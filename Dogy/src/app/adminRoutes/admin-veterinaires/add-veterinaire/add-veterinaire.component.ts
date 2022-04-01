@@ -50,13 +50,13 @@ export class AddVeterinaireComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
-      console.log(this.imagePreview)
+      //console.log(this.imagePreview)
     };
     reader.readAsDataURL(this.selecetdFile);
   }
 
   submit() {
-    console.log(this.form.value);
+    //console.log(this.form.value);
     const fd = new FormData();
     // this.vt = new Veterinaire();
     if (this.form.valid) {
@@ -80,9 +80,9 @@ export class AddVeterinaireComponent implements OnInit {
       //   fd.forEach(element => {
       //     this.vt.image = element
       //   })
-      console.log(fd.get('image'))
-      console.log(fd.get('nom'))
-      console.log(fd.get('prenom'))
+      //console.log(fd.get('image'))
+      //console.log(fd.get('nom'))
+      //console.log(fd.get('prenom'))
       this.service.addVeterinaire(fd).subscribe(() => {
         this.dg.close();
         this.sb.openFromComponent(SnackAdd, {

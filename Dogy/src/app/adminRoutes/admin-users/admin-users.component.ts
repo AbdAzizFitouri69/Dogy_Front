@@ -34,14 +34,14 @@ export class AdminUsersComponent implements OnInit {
   }
 
   holdHandler(e: any){
-    console.log(e);
+    //console.log(e);
 
   }
 
   confirmDelete(e: any,user: User){
     this.progress = e / 10;
     if (this.progress > 250) {
-      console.log(user)
+      //console.log(user)
       this.dg.open(ReasonComponent, {
         data : {
           user : user

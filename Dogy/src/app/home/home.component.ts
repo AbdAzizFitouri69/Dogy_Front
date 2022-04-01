@@ -44,24 +44,24 @@ export class HomeComponent implements OnInit {
   }
 
   go_dogwalking(){
-    this.rt.navigateByUrl('dw')
+    this.rt.navigateByUrl('dogwalkers')
     window.scrollTo(0,0)
   }
 
   go_veterinaire(){
-    this.rt.navigateByUrl('vets')
+    this.rt.navigateByUrl('vétérinaires')
     window.scrollTo(0,0)
   }
 
   go_dresseur(){
-    this.rt.navigateByUrl('dress')
+    this.rt.navigateByUrl('dresseurs')
     window.scrollTo(0,0)
   }
 
   loginDialog(){
     this.dg.open(LoginComponent).afterClosed().subscribe(()=> {
-      console.log('Admin : ' + localStorage.getItem('Admin'))
-      console.log('User : ' + localStorage.getItem('User'))
+      // console.log('Admin : ' + localStorage.getItem('Admin'))
+      // console.log('User : ' + localStorage.getItem('User'))
     })
   }
 

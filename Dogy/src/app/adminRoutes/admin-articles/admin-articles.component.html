@@ -1,23 +1,33 @@
-<h1>Liste des Articles à approuver</h1>
-<div *ngFor="let article of articles">
-<table style="width: 100%; border-style: solid;">
-    <tr>
-        <td rowspan="2">
-            <img [src]="convert(article.image.content)" width="250px" height="250px">
-        </td>
-        <td>
-            <h4>{{article.titre}}</h4>
-            <h6 class="muted">Elaboré par <b>{{article.user.prenom}} {{article.user.nom}}</b> le <b>{{article.dateAjout | date : 'EEEE, dd MMMM YYYY' }}</b></h6>
-        </td>
-        <td rowspan="2" style="text-align: right;">
-            <button (click)="acceptArticle(article.idArticle)" class="btn btn-primary" style="width: 125px; height: 125px;">Accepter</button>
-            <br>
-            <button (click)="refuseArticle(article.idArticle)" class="btn btn-danger" style="width: 125px; height: 125px;">Refuser</button>
-        </td>
-    </tr>
-    <tr>
-        <td  [innerHTML]="article.contenu"></td>
-    </tr>
-</table>
-<br>
+<div class="container" align="center">
+
+    <h1>Liste des Articles à approuver</h1>
+    <div *ngFor="let article of articles">
+        <div class="table-responsive">
+            <table style="width: 100%; border-style: solid;">
+                <tr>
+                    <td rowspan="2">
+                        <img [src]="convert(article.image.content)" width="250px" height="250px">
+                    </td>
+                    <td>
+                        <h4>{{article.titre}}</h4>
+                        <h6 class="muted">Elaboré par <b>{{article.user.prenom}} {{article.user.nom}}</b> le
+                            <b>{{article.dateAjout | date : 'EEEE, dd MMMM YYYY' }}</b>
+                        </h6>
+                    </td>
+                    <td rowspan="2" style="text-align: right;">
+                        <button (click)="acceptArticle(article.idArticle)" class="btn btn-primary"
+                            style="width: 125px; height: 125px;">Accepter</button>
+                        <br>
+                        <button (click)="refuseArticle(article.idArticle)" class="btn btn-danger"
+                            style="width: 125px; height: 125px;">Refuser</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td [innerHTML]="article.contenu"></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+    </div>
+
 </div>

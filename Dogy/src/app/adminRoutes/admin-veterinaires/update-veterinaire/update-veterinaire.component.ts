@@ -24,13 +24,13 @@ export class UpdateVeterinaireComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.data)
+    //console.log(this.data)
 
 
     this.deb = this.data['data'].horraire.substring(3, 8)
     this.fin = this.data['data'].horraire.substring(11, 16)
-    console.log(this.deb)
-    console.log(this.fin)
+    //console.log(this.deb)
+    //console.log(this.fin)
 
     this.form = new FormGroup({
       nom: new FormControl(this.data['data'].nom, [Validators.required]),
@@ -81,7 +81,7 @@ export class UpdateVeterinaireComponent implements OnInit {
     this.vt.prenom = this.form.value.prenom
     this.vt.sexe = this.form.value.sexe
     this.vt.ville = this.form.value.ville
-    console.log(this.vt);
+    //console.log(this.vt);
 
   }
 

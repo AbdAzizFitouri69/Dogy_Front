@@ -1,17 +1,15 @@
-<div class="backgrounded">
+<div class="container" align="center">
 
-</div>
-
-<mat-toolbar style="background-color: #c8e0bf ; ">
-  <span>Dog Walkers</span>
-</mat-toolbar>
 
 <br>
 
 <h1>Liste des "Dog Walkers"</h1>
 
-<br>
+<button (click)="openAddDialog()" class="btn btn-warning" >Ajouter un Dogwalker</button>
 
+<br><br>
+
+<div class="table-responsive">
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -36,9 +34,9 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 
-<button (click)="openAddDialog()" mat-fab color="primary"
-  style="position: absolute; right: 0; bottom: 0; margin-right: 30px; margin-bottom: 20px;" >
-  <mat-icon>add</mat-icon>
-</button>
+
+
+</div>

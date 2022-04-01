@@ -53,19 +53,19 @@ export class AdminVeterinairesComponent implements OnInit {
   fillTable() {
     this.vetService.getAllVeterinaires().subscribe(res => {
       this.vets = res;
-      console.log(res)
+      //console.log(res)
     })
   }
 
   holdHandler(e: any){
-    console.log(e);
+    //console.log(e);
 
   }
 
   confirmDelete(e: any,vet: Veterinaire){
     this.progress = e / 10;
     if (this.progress > 250) {
-      console.log("DELETED : " + vet.nom);
+      //console.log("DELETED : " + vet.nom);
       this.fillTable();
     }
   }

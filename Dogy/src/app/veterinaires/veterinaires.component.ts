@@ -15,7 +15,7 @@ export class VeterinairesComponent implements OnInit {
   vets;
 
   ngOnInit(): void {
-    console.log(this.router.url);
+    //console.log(this.router.url);
     this.fillGrid();
   }
 

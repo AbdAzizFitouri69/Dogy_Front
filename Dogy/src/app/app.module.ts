@@ -68,6 +68,11 @@ import { AdminArticlesComponent } from './adminRoutes/admin-articles/admin-artic
 import { VerificationComponent } from './login/signup/verification/verification.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { AdminDogsittersComponent } from './adminRoutes/admin-dogsitters/admin-dogsitters.component';
+import { AddDogsitterComponent } from './adminRoutes/admin-dogsitters/add-dogsitter/add-dogsitter.component';
+import { UpdateDogsitterComponent } from './adminRoutes/admin-dogsitters/update-dogsitter/update-dogsitter.component';
+import { DogsittersComponent } from './dogsitters/dogsitters.component';
+import { DetailsDogsitterComponent } from './dogsitters/details-dogsitter/details-dogsitter.component';
 
 
 
@@ -123,7 +128,12 @@ import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.compo
     DetailsDresseurComponent,
     AdminArticlesComponent,
     VerificationComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    AdminDogsittersComponent,
+    AddDogsitterComponent,
+    UpdateDogsitterComponent,
+    DogsittersComponent,
+    DetailsDogsitterComponent
   ],
 
   imports: [

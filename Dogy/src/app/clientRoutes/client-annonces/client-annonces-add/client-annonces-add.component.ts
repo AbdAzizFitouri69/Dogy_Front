@@ -38,7 +38,7 @@ export class ClientAnnoncesAddComponent implements OnInit {
   constructor(private service: AnnonceService, private userService: AdminUsersService, private dgRef: MatDialogRef<ClientAnnoncesAddComponent>) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('email'))
+    //console.log(localStorage.getItem('email'))
     this.imagesList = [];
     this.accouplement = true
     this.found = false
@@ -77,7 +77,7 @@ export class ClientAnnoncesAddComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value)
+      //console.log(this.form.value)
       const fd = new FormData();
       fd.append('image', this.selecetdFile, this.selecetdFile.name)
       //fd.append('titre', this.form.value.titre)
@@ -136,28 +136,28 @@ export class ClientAnnoncesAddComponent implements OnInit {
       this.accouplement = true
       this.lost = false
       this.found = false
-      console.log(this.vente)
+      //console.log(this.vente)
     }
     if (type == "Vente") {
       this.vente = true;
       this.accouplement = false
       this.lost = false
       this.found = false
-      console.log(this.vente)
+      //console.log(this.vente)
     }
     if (type == "Chien Trouvé") {
       this.vente = false;
       this.accouplement = false
       this.lost = false
       this.found = true
-      console.log(this.vente)
+      //console.log(this.vente)
     }
     if (type == "Chien Perdu") {
       this.vente = false;
       this.accouplement = false
       this.lost = true
       this.found = false
-      console.log(this.vente)
+      //console.log(this.vente)
     }
   }
 

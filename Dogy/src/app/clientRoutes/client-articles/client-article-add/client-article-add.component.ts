@@ -67,7 +67,7 @@ export class ClientArticleAddComponent implements OnInit {
     })
     this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
       this.user = res;
-      console.log(this.user)
+      //console.log(this.user)
     })
 
   }
@@ -92,13 +92,13 @@ export class ClientArticleAddComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.user)
+      //console.log(this.user)
       const fd = new FormData();
       fd.append('image', this.selecetdFile, this.selecetdFile.name)
       fd.append('titre', this.form.value.titre)
       fd.append('contenu', this.form.value.contenu)
       fd.append('idUser', this.user.idUser.toString())
-      console.log(this.user.idUser)
+      //console.log(this.user.idUser)
       this.articleService.addArticle(fd, this.user.idUser).subscribe(() => {
         this.dgRef.close();
       })

@@ -77,8 +77,8 @@ export class DetailsDogwalkerComponent implements OnInit {
   makeFiable(idDogwalker){
     this.userService.getOneUser(localStorage.getItem('email')).subscribe(res => {
       this.user = res;
-      console.log("User ID = "+this.user.idUser)
-      console.log("Dogwalker ID = "+idDogwalker)
+      //console.log("User ID = "+this.user.idUser)
+      //console.log("Dogwalker ID = "+idDogwalker)
       this.service.addFiable(idDogwalker,this.user.idUser).subscribe(()=>{
         this.sb.open("Vous avez Marqué ce Dogwalker comme Fiable","Fermer")
         this.getfiables();

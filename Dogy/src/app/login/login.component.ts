@@ -41,43 +41,57 @@ export class LoginComponent implements OnInit {
 
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
-      this.socialAuthService.authState.subscribe(res => {
-        this.service.getOneUser(res.email).subscribe(res => {
-          this.user = res;
-          if (this.user != null) {
-            localStorage.setItem("email", res.email)
-            localStorage.setItem("connected", 'true')
-            if (this.user.role == "Admin") {
-              localStorage.setItem('admin', 'true');
+    try {
+      this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+        this.socialAuthService.authState.subscribe(res => {
+          this.service.getOneUser(res.email).subscribe(res => {
+            this.user = res;
+            if (this.user != null) {
+              localStorage.setItem("email", res.email)
+              localStorage.setItem("connected", 'true')
+              if (this.user.role == "Admin") {
+                localStorage.setItem('admin', 'true');
+              }
+              window.location.reload();
+            } else {
+              this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
             }
-            window.location.reload();
-          } else {
-            this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
-          }
+          })
         })
       })
-    })
+    }
+    catch (e) {
+      this.sb.open("Il semble qu'il y a un problème, Veuillez essayer plus Tard",'OK',{
+        duration : 3000
+      })
+    }
+
   }
 
   loginWithFacebook(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
-      this.socialAuthService.authState.subscribe(res => {
-        this.service.getOneUser(res.email).subscribe(res => {
-          this.user = res;
-          if (this.user != null) {
-            localStorage.setItem("email", res.email)
-            localStorage.setItem("connected", 'true')
-            if (this.user.role == "Admin") {
-              localStorage.setItem('admin', 'true');
+    try{
+      this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
+        this.socialAuthService.authState.subscribe(res => {
+          this.service.getOneUser(res.email).subscribe(res => {
+            this.user = res;
+            if (this.user != null) {
+              localStorage.setItem("email", res.email)
+              localStorage.setItem("connected", 'true')
+              if (this.user.role == "Admin") {
+                localStorage.setItem('admin', 'true');
+              }
+              window.location.reload();
+            } else {
+              this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
             }
-            window.location.reload();
-          } else {
-            this.sb.open("Pas de Compte associé à cet E-Mail", "Compris")
-          }
+          })
         })
       })
-    })
+    }catch(e){
+      this.sb.open("Il semble qu'il y a un problème, Veuillez essayer plus Tard","OK",{
+        duration : 3000
+      })
+    }
   }
 
 
@@ -85,7 +99,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.service.getOneUser(this.form.value.email).subscribe(res => {
         this.user = res;
-        console.log(this.user)
+        //console.log(this.user)
         if (this.user != null) {
           if (this.form.value.password === this.user.password) {
             if (res.enabled == true) {

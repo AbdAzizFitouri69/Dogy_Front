@@ -1,10 +1,28 @@
-<div style="margin-left: 100px;" class="row">
+<div class="container-fluid" align="center">
 
-    <!--List of Announcements-->
+    <br>
 
-    <div style="margin-top: 100px;" class="col-8">
+    <h1>Les "Dog Walkers"</h1>
 
-        <h1>Les "Dog Walkers"</h1>
+
+    <div class="row">
+        <div class="col">
+            <input #filterValue (input)="filterByName(filterValue.value)" style="width: 200px;" type="text"
+                class="form-control" placeholder="Rechercher...">
+        </div>
+        <div class="col">
+            <select #filterRegionValue (input)="filterByRegion(filterRegionValue.value)" style="width: 200px;"
+                id="inputState" class="form-control">
+                <option selected value="Tous les régions">Tous les régions</option>
+                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div>
+
+
 
         <br>
 
@@ -13,7 +31,8 @@
             <div class="col-sm-6" *ngFor="let dw of dogwalkers">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><img [src]="convert(dw.image.content)" height="50px" width="50px" style="border-radius: 50%;" >&nbsp;&nbsp;  {{dw.nom | uppercase}} , {{dw.prenom}}</h5>
+                        <h5 class="card-title"><img [src]="convert(dw.image.content)" height="50px" width="50px"
+                                style="border-radius: 50%;">&nbsp;&nbsp; {{dw.nom | uppercase}} , {{dw.prenom}}</h5>
                         <p class="card-text"><i>{{replace(dw.ville)}}</i></p>
                         <p>{{dw.ratings.length}} Feedbacks d'aprés les clients</p>
                         <button (click)="openDogwalkerDetails(dw)" class="btn btn-primary">Plus de Détails</button>
@@ -23,18 +42,6 @@
 
         </div>
     </div>
-    <!--List of Filters-->
-    <div style="margin-top: 100px;" class="col-4">
-        <h1>Filtrer les "Dog Walkers"...</h1>
-        <h3>Par Nom...</h3>
-        <input #filterValue (input)="filterByName(filterValue.value)" style="width: 200px;" type="text" class="form-control" placeholder="Recherche...">
-        <br>
-        <h3>Par région...</h3>
-        <select #filterRegionValue (input)="filterByRegion(filterRegionValue.value)" style="width: 200px;" id="inputState" class="form-control">
-            <option selected value="Tous les régions">Tous les régions</option>
-            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
-        </select>
-    </div>
-</div>
 
-<br><br><br>
+
+</div>

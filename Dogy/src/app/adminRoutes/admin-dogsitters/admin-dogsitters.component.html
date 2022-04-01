@@ -1,0 +1,39 @@
+<div class="container" align="center">
+
+
+  <br>
+
+  <h1>Liste des "Dog Sitters"</h1>
+
+  <button class="btn btn-warning" (click)="openAddDialog()">Ajouter un DogSitter</button>
+  <br>
+  <br>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Sexe</th>
+          <th scope="col">Ville</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dogsitter of dogsitters">
+          <th scope="row">{{dogsitter.id}}</th>
+          <td><img [src]="convert(dogsitter.image.content)" height="100px" width="100px" style="border-radius: 50%;">
+          </td>
+          <td>{{dogsitter.nom}}</td>
+          <td>{{dogsitter.prenom}}</td>
+          <td>{{dogsitter.sexe}}</td>
+          <td>{{dogsitter.ville}}</td>
+          <td><button class="btn btn-primary" (click)="openUpdateDialog(dogsitter)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

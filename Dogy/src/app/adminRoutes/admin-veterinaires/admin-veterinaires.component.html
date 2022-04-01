@@ -1,45 +1,43 @@
-<div class="backgrounded">
+<div class="container" align="center">
+
+  <br>
+
+  <h1>Liste des Véterinaires</h1>
+
+  <button (click)="openAddDialog()" class="btn btn-warning" >Ajouter un Véterinaire</button>
+
+  <br><br>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Sexe</th>
+          <th scope="col">Ville</th>
+          <th colspan="2" scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vet of vets">
+          <th scope="row">{{vet.id}}</th>
+          <td><span *ngIf="vet.image"><img [src]="convert(vet.image.content)" height="100px" width="100px"
+                style="border-radius: 50%;"></span></td>
+          <td>{{vet.nom}}</td>
+          <td>{{vet.prenom}}</td>
+          <td>{{vet.sexe}}</td>
+          <td>{{vet.ville}}</td>
+          <td><button class="btn btn-primary" (click)="openUpdateDialog(vet)">Modifier</button></td>
+          <!-- <td><button class="btn delete" appHoldable (holdTime)="confirmDelete($event,vet)" >Supprimer</button>&nbsp;</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  
 
 </div>
-
-<mat-toolbar style="background-color: #c8e0bf ; ">
-  <span>Véterinaires</span>
-</mat-toolbar>
-
-<br>
-
-<h1>Liste des Véterinaires</h1>
-
-<br>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Photo</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Sexe</th>
-      <th scope="col">Ville</th>
-      <th colspan="2" scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor = "let vet of vets">
-      <th scope="row">{{vet.id}}</th>
-      <td><span *ngIf = "vet.image"><img [src]="convert(vet.image.content)" height="100px" width="100px" style="border-radius: 50%;" ></span></td>
-      <td>{{vet.nom}}</td>
-      <td>{{vet.prenom}}</td>
-      <td>{{vet.sexe}}</td>
-      <td>{{vet.ville}}</td>
-      <td><button class="btn btn-primary" (click)="openUpdateDialog(vet)" >Modifier</button></td>
-      <!-- <td><button class="btn delete" appHoldable (holdTime)="confirmDelete($event,vet)" >Supprimer</button>&nbsp;</td> -->
-    </tr>
-  </tbody>
-</table>
-
-
-<button (click)="openAddDialog()" mat-fab color="primary"
-  style="position: absolute; right: 0; bottom: 0; margin-right: 30px; margin-bottom: 20px;">
-  <mat-icon>add</mat-icon>
-</button>

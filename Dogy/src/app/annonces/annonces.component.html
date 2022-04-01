@@ -2,76 +2,74 @@
 
 </div>
 
-<div style="margin-left: 100px;" class="row">
 
-    <div class="col-8">
 
-        
+<div class="container-fluid" align="center">
 
-        <br>
-        <div style="margin-left: 20px;">
-            <h1>Annonces</h1>
-            <div>
-                <br><br>
+    <h1>Annonces</h1>
 
-                <div *ngIf="annonces.length == 0">
-                    <h4>Pas de Nouvelles Annonces pour le moment<br><br><br></h4>
-                </div>
+    <br>
 
-                <table style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 700px;" *ngFor="let annonce of annonces">
-                    <tr>
-                        <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px"></td>
-                        <td>
-                            <b>{{annonce.titre}}</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
-                            <b>Race</b> : {{annonce.race}}&nbsp;
-                            <b>Age</b> : {{annonce.age}}&nbsp;
-                            <b>Sexe</b> : {{annonce.sexe}}&nbsp;
-                            <b>Taille</b> : {{annonce.taille}}<br>
-                            <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span
-                                    *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span
-                                    *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span
-                                    *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
-                            <b>Ville</b> : {{annonce.ville}}<br>
-                            <b><button class="btn btn-lg btn-success that" >Plus de Détails <span class="tooltiptext"><span *ngIf="annonce.details">{{annonce.details}}</span><span *ngIf="!annonce.details">Pas de Détails supplémentaires</span></span></button></b>
-                            <!-- <span *ngIf="annonce.details" class="tooltiptext">{{annonce.details}}</span><span
-                                *ngIf="!annonce.details" class="tooltiptext">Pas de Détails Supplémentaires</span> -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Depuis L'utilisateur</b> : <span style="background-color: yellow;">{{annonce.user.prenom}}</span>, <b>Email</b> : <span style="background-color: yellow;">{{annonce.user.email}}</span></td>
-                    </tr>
-                </table>
-            </div>
+
+    <div class="row">
+        <div class="col">
+            <select (change)="onCityChange()" style="width: 200px;" id="inputState" class="form-control">
+                <option selected value="Tous les régions">Tous les régions</option>
+                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+            </select>
+            <br>
         </div>
+        <div class="col">
+            <select #annonceType (change)="onTypeChange(annonceType.value)" style="width: 200px;" id="inputType"
+                class="form-control">
+                <option selected value="Tous les types">Tous les types</option>
+                <option value="Accouplement">Accouplement</option>
+                <option value="Vente">Vente</option>
+                <option value="Lost">Lost</option>
+                <option value="Found">Found</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="annonces.length == 0">
+        <h4>Pas de Nouvelles Annonces pour le moment<br><br><br></h4>
+    </div>
+
+    <div class="table-responsive">
+
+    <table style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 700px;"
+        *ngFor="let annonce of annonces">
+        <tr>
+            <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px">
+            </td>
+            <td>
+                <b>{{annonce.titre}}</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
+                <b>Race</b> : {{annonce.race}}&nbsp;
+                <b>Age</b> : {{annonce.age}}&nbsp;
+                <b>Sexe</b> : {{annonce.sexe}}&nbsp;
+                <b>Taille</b> : {{annonce.taille}}<br>
+                <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span
+                        *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span
+                        *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span
+                        *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
+                <b>Ville</b> : {{annonce.ville}}<br>
+                <b><button class="btn btn-lg btn-success that" (click)="plusDeDetails(annonce)">Plus de Détails</button></b>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Depuis L'utilisateur</b> : <span style="background-color: yellow;">{{annonce.user.prenom}}</span>,
+                <b>Email</b> :
+                <span style="background-color: yellow;">{{annonce.user.email}}</span>
+            </td>
+        </tr>
+    </table>
+
+</div>
 
 
-    </div>
-    <!--List of Filters-->
-    
-    <div style="margin-top: 15px; right: 0; position: fixed; " class="col-4">
-        <br>
-        <h1>Filtrer les annonces...</h1>
-        <h3>Par région...</h3>
-        <select (change)="onCityChange()" style="width: 200px;" id="inputState" class="form-control">
-            <option selected value="Tous les régions">Tous les régions</option>
-            <option *ngFor="let region of regions"  [value]="region">{{region}}</option>
-        </select>
-        <br>
-        <h3>Par Nature d'annonce...</h3>
-        <select #annonceType (change)="onTypeChange(annonceType.value)" style="width: 200px;" id="inputType" class="form-control">
-            <option selected value="Tous les types">Tous les types</option>
-            <option value="Accouplement">Accouplement</option>
-            <option value="Vente">Vente</option>
-            <option value="Lost">Lost</option>
-            <option value="Found">Found</option>
-        </select>
-        <br><br><br>
-        <br><br><br>
-        <br><br><br>
-    </div>
 </div>

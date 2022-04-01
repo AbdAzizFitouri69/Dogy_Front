@@ -50,7 +50,7 @@ export class AddDogwalkerComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
-      console.log(this.imagePreview)
+      //console.log(this.imagePreview)
     };
     reader.readAsDataURL(this.selecetdFile);
   }
@@ -69,9 +69,9 @@ export class AddDogwalkerComponent implements OnInit {
       fd.append('ville', this.form.value.ville)
       fd.append('sexe', this.form.value.sexe)
       fd.append('email', this.form.value.email)
-      console.log(fd.get('image'))
-      console.log(fd.get('nom'))
-      console.log(fd.get('prenom'))
+      // console.log(fd.get('image'))
+      // console.log(fd.get('nom'))
+      // console.log(fd.get('prenom'))
       this.service.addDogwalker(fd).subscribe(() => {
         this.dr.close();
         this.sb.openFromComponent(SnackAdd, {
