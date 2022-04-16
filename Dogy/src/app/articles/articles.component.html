@@ -1,45 +1,29 @@
-<div class="backgrounded">
+<!-- <div class="backgrounded">
 
-</div>
+</div> -->
 
-<div class="container-fluid" align="center">
 
-    <div>
-        <h1>Articles du Blog</h1>
+<!-- =========== Start All Hotel In Grid View =================== -->
+<section class="gray-bg">
+    <div class="container">
+        <h3>Articles</h3><br>
+        <div class="col-md-4 col-sm-6" *ngFor="let article of articles">
+            <div class="blog-box blog-grid-box">
+                <div class="blog-grid-box-img">
+                    <img  [src]="convert(article.image.content)"class="img-responsive" alt="">
+                </div>
+
+                <div class="blog-grid-box-content">
+                    <h4>{{article.titre}}</h4>
+                    <p><strong>De </strong> <span class="theme-cl">{{article.user.prenom}} {{article.user.nom}}</span></p>
+                    <!-- <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    </p> -->
+                    <a (click)="openComments(article)" class="theme-cl" title="Read More..">Consulter...</a>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-    <br>
-    <div class="table-responsive">
-        <table *ngFor="let article of articles" class="p-2"
-            style="max-width: 700px; background-color: rgb(224, 224, 224); border-radius: 5%; border-style: solid;">
-            <tr>
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <!-- <td rowspan="2"><img src="../../../assets/images/user.jpg"
-                                    style="height: 75px; width: 75px; border-radius: 50%;"></td> -->
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;<b>Elaboré Par : </b><i>{{article.user.prenom}}
-                                    {{article.user.nom}}</i></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;<i>{{article.dateAjout | date : 'EEEE, dd MMMM YYYY' }}</i></td>
-                        </tr>
-                    </table>
-            </tr>
-            <tr>
-                <td><h3 style="margin-left: 16px;">{{article.titre}}</h3></td>
-            </tr>
-            <tr>
-                <td><div style="margin-left: 16px;" [innerHTML]="article.contenu"></div></td>
-            </tr>
-            <tr>
-                <td><img [src]="convert(article.image.content)" width="750px" height="750px"></td>
-            </tr>
-            <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="openComments(article)">{{article.commentaires.length}} Commentaires</span></td>
-            </tr>
-        </table>
-        <br>
-    </div>    
-
-
-</div>
+</section>
+<!-- =========== End All Hotel In Grid View =================== -->

@@ -1,0 +1,93 @@
+<div mat-dialog-content>
+    <div class="tr-single-box">
+        <div class="tr-single-header">
+            <h4><i class="fa fa-star-o"></i>Vue d'Ensemble</h4>
+        </div>
+        <div class="tr-single-body">
+            <div class="row">
+            
+                <div class="col-md-6 col-sm-6">
+                    <div class="list-thumb-box">
+                        <img [src]="convert(annonce.image.content)" class="img-responsive" alt="" />
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-sm-6">
+                    <div class="list-overview-detail">
+                        <h3>{{annonce.titre}}</h3>
+                        <ul class="extra-service">
+                            <li>
+                                <div class="icon-box-icon-block">
+                                    <a href="#">
+                                        <div class="icon-box-round">
+                                            <i class=" ti-location-pin"></i>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            {{annonce.ville}}
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="icon-box-icon-block">
+                                    <a href="#">
+                                        <div class="icon-box-round">
+                                            <i class="ti-email"></i>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            {{annonce.user.email}}
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="icon-box-icon-block">
+                                    <a href="#">
+                                        <div class="icon-box-round">
+                                            <i class="ti-star"></i>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <span *ngIf="annonce.dressage">Dressé(e)</span>
+                                            <span *ngIf="!annonce.dressage">Non Dressé(e)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="icon-box-icon-block">
+                                    <a href="#">
+                                        <div class="icon-box-round">
+                                            <i class="ti-star"></i>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <span *ngIf="annonce.papiers">Avec Papiers</span>
+                                            <span *ngIf="!annonce.papiers">Sans Papiers</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div class="icon-box-icon-block">
+                                    <a href="#">
+                                        <div class="icon-box-round">
+                                            <i class="ti-comment-alt"></i>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            Description : {{annonce.description}}<span *ngIf="!annonce.description">Pas de Description Supplémentaire</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AnnonceService } from '../services/Admin-Services/Annonces/annonce.service';
@@ -6,11 +7,19 @@ import { AnnonceService } from '../services/Admin-Services/Annonces/annonce.serv
 @Component({
   selector: 'app-annonces',
   templateUrl: './annonces.component.html',
-  styleUrls: ['./annonces.component.css']
+  styleUrls: ['./annonces.component.css',
+    './assets/plugins/css/plugins.css',
+    './assets/css/style.css',
+    './assets/css/responsiveness.css'
+]
 })
 export class AnnoncesComponent implements OnInit {
 
-  constructor(private service : AnnonceService, private _sanitizer : DomSanitizer, private sb: MatSnackBar) { }
+  constructor(private service : AnnonceService, 
+    private _sanitizer : DomSanitizer, 
+    private sb: MatSnackBar,
+    private dg : MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.fillAnnonces();
@@ -163,6 +172,57 @@ export class AnnoncesComponent implements OnInit {
         })
       }
     }
+  }
+
+
+  listView : boolean = false
+  gridView : boolean = true
+
+  switchToList(){
+    this.listView = true
+    this.gridView = false
+  }
+
+  switchToGrid(){
+    this.listView = false
+    this.gridView = true
+  }
+
+  details(annonce){
+    this.dg.open(AnnonceDetailComponent,{
+      data : {
+        annonce : annonce
+      }
+    })
+  }
+
+}
+
+@Component({
+  selector: 'app-detail-annonce',
+  templateUrl: './details-annonce.component.html',
+  styleUrls: ['./annonces.component.css',
+    './assets/plugins/css/plugins.css',
+    './assets/css/style.css',
+    './assets/css/responsiveness.css'
+]
+})
+export class AnnonceDetailComponent implements OnInit {
+  
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data : any,
+    private _sanitizer : DomSanitizer
+  ){}
+
+  annonce : any
+
+  ngOnInit(): void {
+    this.annonce = this.data['annonce']
+  }
+
+  convert(base64String) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
 }

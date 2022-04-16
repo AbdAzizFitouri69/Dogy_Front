@@ -1,33 +1,73 @@
-<h4 mat-dialog-title><span mat-dialog-close style="color: red; right: 0;">
-    <mat-icon>cancel</mat-icon>
-  </span>&nbsp;Commentaires d'Article "{{data['data'].titre}}" ({{comments?.length}})</h4>
+<div mat-dialog-content>
+  <div class="tr-single-box">
+    <div class="tr-single-header">
+      <h4><i class="fa fa-star-o"></i>Vue d'Ensemble</h4>
+    </div>
+    <div class="tr-single-body">
+      <div class="row">
 
-<mat-dialog-content>
-  <div class="container">
-    <h4 *ngIf="comments?.length == 0">Soyez le premier à Commenter</h4>
+        <div class="col-md-6 col-sm-6">
+          <div class="list-thumb-box">
+            <img [src]="convert(article.image.content)" class="img-responsive" alt="" />
+          </div>
+        </div>
 
-    <div *ngFor="let comment of comments" class="media"
-      style="max-width: 500px ; border-style: groove; border-radius: 20px; background-color: rgb(180, 179, 179);">
-      <div class="media-body">
-        <h5 class="mt-0"><b>{{comment.user.prenom}} {{comment.user.nom}}</b></h5>
-        <i>{{comment.contenu}}</i>
+        <div class="col-md-6 col-sm-6">
+          <div class="list-overview-detail">
+            <h3>{{article.titre}}</h3>
+            <div class="extra-service" [innerHTML]="article.contenu">
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <!-- ============ Review =================== -->
+        <div role="tabpanel" style="width: 100%;" class="tab-pane fade in" id="Review">
+
+          <!-- Review -->
+          <div class="row">
+            <div class="tr-single-box full-width" >
+              <div class="tr-single-header">
+                <h4><i class="ti-comment"></i>Tous les Commentaires</h4>
+              </div>
+              <div class="tr-single-body">
+
+                <!-- Single Review -->
+                <div class="review-box full-width" *ngFor="let comment of comments">
+                  <div class="review-box-content">
+                    <div class="review-user-info">
+                      <h4>{{comment.user.prenom}} {{comment.user.nom}}</h4>
+                      <p>{{comment.contenu}}</p>
+                    </div>
+                    
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
-      <br><br><br>
     </div>
   </div>
-</mat-dialog-content>
+</div>
 
 <mat-dialog-actions>
 
   <div class="container">
 
     <form class="row" [formGroup]="form" (ngSubmit)="submit()">
-    <div class="input-group">
-      <input id="comment" type="text" formControlName="content" class="form-control" placeholder="Ecrire Votre commentaire ici">
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="submit"><mat-icon>send</mat-icon></button>
+      <div class="input-group">
+        <input id="comment" type="text" formControlName="content" class="form-control"
+          placeholder="Ecrire Votre commentaire ici">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
     </form>
 
   </div>

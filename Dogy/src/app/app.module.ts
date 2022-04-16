@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
 import { VenteComponent } from './vente/vente.component';
 import { AccouplementComponent } from './accouplement/accouplement.component';
-import { AnnoncesComponent } from './annonces/annonces.component';
+import { AnnonceDetailComponent, AnnoncesComponent } from './annonces/annonces.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
@@ -133,7 +133,8 @@ import { DetailsDogsitterComponent } from './dogsitters/details-dogsitter/detail
     AddDogsitterComponent,
     UpdateDogsitterComponent,
     DogsittersComponent,
-    DetailsDogsitterComponent
+    DetailsDogsitterComponent,
+    AnnonceDetailComponent
   ],
 
   imports: [

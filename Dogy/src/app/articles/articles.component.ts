@@ -10,7 +10,11 @@ import { CommentsComponent } from './comments/comments.component';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+  styleUrls: ['./articles.component.css',
+  './assets/plugins/css/plugins.css',
+  './assets/css/style.css',
+  './assets/css/responsiveness.css'
+]
 })
 export class ArticlesComponent implements OnInit {
 

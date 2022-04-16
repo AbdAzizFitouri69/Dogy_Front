@@ -1,75 +1,153 @@
-<div class="backgrounded">
+<!-- <div class="backgrounded">
 
-</div>
+</div> -->
+<!-- =========== Start All Destination In Grid View =================== -->
+<div class="gray-bg">
 
+    <div class="container">
 
-
-<div class="container-fluid" align="center">
-
-    <h1>Annonces</h1>
-
-    <br>
+        <h1>Annonces</h1>
 
 
-    <div class="row">
-        <div class="col">
-            <select (change)="onCityChange()" style="width: 200px;" id="inputState" class="form-control">
-                <option selected value="Tous les régions">Tous les régions</option>
-                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
-            </select>
-            <br>
+        <!-- Row -->
+        <div class="row mrg-0">
+            <div class="tr-single-box short-box">
+                <div class="col-sm-3 hidden-xs align-self-center">
+                    <h4>Recherche Avancée</h4>
+                </div>
+
+                <div class="col-sm-9 text-right">
+
+                    <div class="btn-group mr-lg-2">
+
+                        <select id="inputState" (change)="onCityChange()" class="btn btn-default dropdown-toggle">
+                            <option selected value="Tous les régions">Tous les régions</option>
+                            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+                        </select>
+
+                        <select #annonceType (change)="onTypeChange(annonceType.value)" style="width: 200px;"
+                            id="inputType" class="btn btn-default dropdown-toggle">
+                            <option selected value="Tous les types">Tous les types</option>
+                            <option value="Accouplement">Accouplement</option>
+                            <option value="Vente">Vente</option>
+                            <option value="Lost">Lost</option>
+                            <option value="Found">Found</option>
+                        </select>
+
+                    </div>
+
+                    <div class="btn-group">
+                        <a (click)="switchToGrid()" class="btn btn-default tooltips">
+                            <i class="ti-flix ti-layout-grid2"></i>
+                        </a>
+                    </div>
+
+                    <div class="btn-group">
+                        <a (click)="switchToList()" class="btn btn-default tooltips">
+                            <i class="ti-flix ti-view-list-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col">
-            <select #annonceType (change)="onTypeChange(annonceType.value)" style="width: 200px;" id="inputType"
-                class="form-control">
-                <option selected value="Tous les types">Tous les types</option>
-                <option value="Accouplement">Accouplement</option>
-                <option value="Vente">Vente</option>
-                <option value="Lost">Lost</option>
-                <option value="Found">Found</option>
-            </select>
+        <!-- /Row -->
+
+        <!--GRID VIEW-->
+
+        <div class="row" *ngIf="gridView == true">
+
+            <!-- Single Destination -->
+            <div class="col-md-4 col-sm-6" *ngFor="let annonce of annonces">
+                <article class="destination-box style-1">
+
+                    <div class="destination-box-image">
+                        <figure>
+                            <a (click)="details(annonce)">
+                                <img [src]="convert(annonce.image.content)" class="img-responsive listing-box-img"
+                                    alt="" />
+                                <div class="list-overlay"></div>
+                            </a>
+                            <!-- <div class="discount-flick">-12%</div> -->
+                            <h4 class="destination-place">
+                                <a>{{annonce.titre}}</a>
+                            </h4>
+                            <!-- <a href="#" class="list-like left"><i class="ti-heart"></i></a> -->
+                        </figure>
+                    </div>
+
+                    <div class="entry-meta">
+                        <div class="meta-item meta-rating">
+                            <p>{{annonce.race}} , {{annonce.age}}</p>
+                        </div>
+                        <div class="meta-item meta-comment fl-right">
+                            <span class="real-price padd-l-10 font-bold">{{annonce.sexe}} , {{annonce.taille}}</span>
+                        </div>
+                    </div>
+
+                    <div class="inner-box">
+                        <div class="box-inner-ellipsis">
+                            <h4 class="entry-location">
+                                <a>{{annonce.ville}}</a>
+                            </h4>
+                            <div class="price-box">
+                                <div class="destination-price fl-right">
+                                    <a (click)="details(annonce)"><i class="theme-cl ti-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+
+        <!--LIST VIEW-->
+
+        <div class="row" *ngIf="listView == true">
+            <!-- Single Destination List -->
+            <div class="col-lg-6 col-md-6" *ngFor="let annonce of annonces">
+                <article class="destination-box list-style">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5">
+                            <div class="destination-box-image">
+                                <a (click)="details(annonce)">
+                                    <img [src]="convert(annonce.image.content)"
+                                        class="img-responsive destination-box-img" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                            <div class="inner-box">
+                                <div class="box-inner-ellipsis">
+                                    <div style="margin: 0px; padding: 0px; border: 0px;">
+                                        <h3 class="entry-title">
+                                            <a>{{annonce.titre}}</a>
+                                        </h3>
+                                        <div class="entry-content">
+                                            <p>{{annonce.race}} , {{annonce.age}}</p>
+                                            <span class="price">De <strong class="theme-cl">{{annonce.user.prenom}}</strong> / <strong>{{annonce.user.email}}</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-meta">
+                                    <div class="meta-item meta-author">
+                                        <div class="coauthors">
+                                            <div class="vcard author">
+                                                <div class="fn">
+                                                    <h4>{{annonce.ville}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item meta-comment fl-right">
+                                        <p>{{annonce.sexe}} , {{annonce.taille}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </div>
-
-    <div *ngIf="annonces.length == 0">
-        <h4>Pas de Nouvelles Annonces pour le moment<br><br><br></h4>
-    </div>
-
-    <div class="table-responsive">
-
-    <table style="background-color: beige; margin-left: 15px; border-style: dashed; margin-top: 15px; max-width: 700px;"
-        *ngFor="let annonce of annonces">
-        <tr>
-            <td rowspan="3"><img [src]="convert(annonce.image.content)" height="230px" width="230px">
-            </td>
-            <td>
-                <b>{{annonce.titre}}</b>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <b>Date de Création : </b>{{annonce.createdAt | date : 'EEEE, dd MMMM YYYY'}}<br>
-                <b>Race</b> : {{annonce.race}}&nbsp;
-                <b>Age</b> : {{annonce.age}}&nbsp;
-                <b>Sexe</b> : {{annonce.sexe}}&nbsp;
-                <b>Taille</b> : {{annonce.taille}}<br>
-                <span><span *ngIf="annonce.papiers == true"><b>Avec Papiers,&nbsp;</b></span><span
-                        *ngIf="annonce.papiers == false"><b>Sans Papiers,&nbsp;</b></span><span
-                        *ngIf="annonce.dressage == true"><b>Dressé(e)</b><br></span><span
-                        *ngIf="annonce.dressage == false"><b>Non Dressé(e)</b><br></span></span>
-                <b>Ville</b> : {{annonce.ville}}<br>
-                <b><button class="btn btn-lg btn-success that" (click)="plusDeDetails(annonce)">Plus de Détails</button></b>
-            </td>
-        </tr>
-        <tr>
-            <td><b>Depuis L'utilisateur</b> : <span style="background-color: yellow;">{{annonce.user.prenom}}</span>,
-                <b>Email</b> :
-                <span style="background-color: yellow;">{{annonce.user.email}}</span>
-            </td>
-        </tr>
-    </table>
-
-</div>
-
-
 </div>
